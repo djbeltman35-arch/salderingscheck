@@ -23,6 +23,7 @@
 - [Terugleverkosten 2027 per leverancier](https://salderingscheck-nl.netlify.app/terugleverkosten-2027/): vergoeding, terugleverkosten en netto per kWh per leverancier, met bronnen en datum.
 - [Thuisbatterij terugverdientijd](https://salderingscheck-nl.netlify.app/thuisbatterij-terugverdientijd/): rekenvoorbeelden voor plug-and-play en vaste thuisbatterijen.
 - [Einde salderen: wat nu?](https://salderingscheck-nl.netlify.app/einde-salderen-wat-nu/): checklist met zes stappen voor 1 januari 2027.
+- [Over Salderingscheck](https://salderingscheck-nl.netlify.app/over/): wie de site maakt, hoe de berekening werkt (aannames), privacy en een gratis insluitbare widget (/embed/).
 
 ## Bronnen
 

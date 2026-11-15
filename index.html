@@ -21,6 +21,7 @@
 <meta property="og:title" content="Salderingscheck: wat kost het einde van salderen jou?">
 <meta property="og:description" content="Gratis rekentool: zie wat je vanaf 2027 extra betaalt en of een thuisbatterij voor jou loont.">
 <meta property="og:url" content="https://salderingscheck-nl.netlify.app/">
+<meta name="robots" content="max-image-preview:large">
 <meta property="og:image" content="https://salderingscheck-nl.netlify.app/icons/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,14 +33,24 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://salderingscheck-nl.netlify.app/#org",
+      "name": "Salderingscheck",
+      "url": "https://salderingscheck-nl.netlify.app/",
+      "logo": "https://salderingscheck-nl.netlify.app/icons/icon-512.png",
+      "email": "erik@beltman.email",
+      "founder": { "@type": "Person", "name": "Erik" }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://salderingscheck-nl.netlify.app/#webpage",
       "url": "https://salderingscheck-nl.netlify.app/",
       "name": "Salderingscheck: wat kost het einde van salderen jou?",
       "inLanguage": "nl-NL",
       "datePublished": "2026-11-15",
-      "dateModified": "2026-11-15",
+      "dateModified": "2026-11-16",
       "author": { "@type": "Person", "name": "Erik", "email": "erik@beltman.email" },
+      "publisher": { "@id": "https://salderingscheck-nl.netlify.app/#org" },
       "about": { "@type": "Thing", "name": "Salderingsregeling Nederland, einde per 1 januari 2027" },
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#in-het-kort"] }
     },
@@ -216,6 +227,12 @@ details[open] summary::before{content:"▾ ";}
 @media (max-width:520px){.plansteps li{flex-wrap:wrap}.plansteps .pt{flex-basis:calc(100% - 40px)}.plansteps .pw{width:100%;padding-left:40px;text-align:left;display:flex;gap:8px;align-items:baseline}.plansteps .pw small{display:inline}}
 .plan-tot{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:var(--good-soft);font-size:.95rem}
 .plan-tot:empty{display:none}
+.stickybar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:8;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px 10px 16px;border-radius:14px;background:#08362a;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14)}
+.stickybar[hidden]{display:none}
+.stickybar b{color:var(--sun);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:1.15rem;margin-left:4px}
+.stickybar a{background:var(--sun);color:#1a1405;font-weight:700;text-decoration:none;border-radius:10px;padding:9px 12px;white-space:nowrap}
+@media (min-width:761px){.stickybar{display:none!important}}
+.ics{margin-top:8px;display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:.85rem;font-weight:700;color:var(--brand);background:transparent;border:1px solid var(--line);border-radius:10px;padding:6px 10px;cursor:pointer}
 .facts{padding-left:20px;margin:0}
 .facts li{margin-bottom:6px;font-size:.95rem}
 .tabletitle{font-size:1rem;margin:16px 0 8px}
@@ -484,6 +501,7 @@ footer a{color:var(--muted)}
       <a class="site" href="/terugleverkosten-2027/"><b>Terugleverkosten 2027 per leverancier</b><span>Wat houd je netto over per teruggeleverde kWh? Alle leveranciers op een rij.</span></a>
       <a class="site" href="/thuisbatterij-terugverdientijd/"><b>Thuisbatterij: wanneer loont hij?</b><span>Eerlijke rekenvoorbeelden voor plug-and-play en vaste batterijen.</span></a>
       <a class="site" href="/einde-salderen-wat-nu/"><b>Einde salderen: wat nu?</b><span>Checklist: zes stappen voor 1 januari 2027.</span></a>
+      <a class="site" href="/over/"><b>Hoe we rekenen</b><span>Uitleg, bronnen en privacy. Plus de gratis widget voor je eigen site.</span></a>
     </div>
   </section>
 
@@ -502,12 +520,13 @@ footer a{color:var(--muted)}
   </section>
 
   <footer>
-    <p>Gemaakt door Erik · <a href="mailto:erik@beltman.email">erik@beltman.email</a></p>
+    <p>Gemaakt door Erik · <a href="mailto:erik@beltman.email">erik@beltman.email</a> · <a href="/over/">Over en privacy</a> · <a href="/over/#h-widget">Widget voor je site</a></p>
     <p id="disclosure" class="hidden">Sommige links zijn partnerlinks. Sluit je via zo'n link iets af, dan krijgen wij een kleine vergoeding. Jij betaalt niets extra en het verandert onze berekening niet.</p>
   </footer>
 </main>
 
 <noscript><p class="wrap noscript">Zet JavaScript aan om de rekentool te gebruiken. De belangrijkste feiten en voorbeelden staan hierboven onder "In het kort".</p></noscript>
+<div class="stickybar" id="stickybar" hidden><span>Extra per jaar <b id="sbExtra"></b></span><a href="#h-uitkomst">Bekijk je plan <span aria-hidden="true">↓</span></a></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="/calc.js" defer></script>
 <script src="/app.js" defer></script>

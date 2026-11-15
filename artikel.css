@@ -63,3 +63,4 @@ footer a{color:var(--muted)}
 @media print{.hero{background:none;color:#000}.hero .deco,.cta,footer{display:none}main{margin-top:0}}
 .capt{caption-side:bottom;text-align:left;padding:8px 10px}
 @media (max-width:520px){td .bron{font-size:.74rem}th,td{padding:8px 7px}}
+.code{background:#08362a;color:#e8f5ee;border-radius:10px;padding:12px;overflow-x:auto;font:13px/1.5 'JetBrains Mono',ui-monospace,monospace;white-space:pre-wrap;word-break:break-all}

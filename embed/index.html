@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salderingscheck widget: wat kost het einde van salderen jou?</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://salderingscheck-nl.netlify.app/">
+<link rel="stylesheet" href="/embed/embed.css">
+</head>
+<body>
+<div class="w">
+  <div class="top"><span class="logo">SALDERINGS<span>CHECK</span></span><span class="tag">Gratis</span></div>
+  <p class="q">Wat kost het einde van salderen jou vanaf 2027?</p>
+  <div class="row">
+    <label>Zonnepanelen<input id="panelen" type="number" inputmode="numeric" min="0" max="200" value="10"></label>
+    <label>Verbruik (kWh/jaar)<input id="verbruik" type="number" inputmode="numeric" min="0" step="100" value="3000"></label>
+  </div>
+  <label class="full">Je leverancier in 2027<select id="leverancier"><option value="">Weet ik niet (±2 ct netto)</option></select></label>
+  <div class="out"><span>Extra per jaar</span><b id="extra">€ 0</b><small id="maand"></small></div>
+  <a class="cta" id="cta" href="https://salderingscheck-nl.netlify.app/?bron=widget" target="_blank" rel="noopener">Bekijk je volledige actieplan →</a>
+  <p class="foot">Rekentool van <a href="https://salderingscheck-nl.netlify.app/?bron=widget" target="_blank" rel="noopener">Salderingscheck</a> · geen cookies</p>
+</div>
+<script src="/calc.js"></script>
+<script src="/embed/embed.js"></script>
+</body>
+</html>

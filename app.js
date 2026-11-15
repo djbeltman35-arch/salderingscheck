@@ -150,6 +150,8 @@
     $('extra').className = 'big ' + (extra > 0.5 ? 'bad' : 'good');
     $('uitkomst-intro').textContent = extra > 0.5 ? 'Vanaf 2027 betaal je voor stroom ongeveer' : 'Vanaf 2027 verandert er voor jou weinig:';
     $('extra-sub').textContent = extra > 0.5 ? 'per jaar meer dan nu (± ' + fmtEur(extra / 12) + ' per maand)' : (extra < -0.5 ? 'per jaar minder dan nu' : 'nauwelijks verschil');
+    var sb = $('sbExtra'); if (sb) sb.textContent = fmtEur(Math.max(0, extra)).replace(/\s/g, '');
+    if (stickyBalk.zet) stickyBalk.zet();
     var he = $('heroExtra'); if (he) he.textContent = fmtEur(Math.max(0, extra)).replace(/\s/g, '');
     $('kostenNu').textContent = fmtEur(r.kostenNu);
     $('kosten27').textContent = fmtEur(r.kosten27);
@@ -282,11 +284,12 @@
     }
     if (r.extra > 0.5) {
       var rest = Math.max(0, r.extra - totaal);
-      stappen.push({ t: 'Verhoog je termijnbedrag per 1 januari', u: 'Met ± ' + fmtEur(rest / 12) + ' per maand, zo voorkom je een naheffing', l: 'Voorkom naheffing', geen: true });
+      stappen.push({ t: 'Verhoog je termijnbedrag per 1 januari', u: 'Met ± ' + fmtEur(rest / 12) + ' per maand, zo voorkom je een naheffing', l: 'Voorkom naheffing', geen: true, ics: rest / 12 });
     }
     $('plan').innerHTML = stappen.map(function (x) {
       var rechts = x.w ? '<span class="pw">+' + fmtEur(x.w) + '<small>per jaar · ' + esc(x.l) + '</small></span>' : (x.l ? '<span class="pw"><small>' + esc(x.l) + '</small></span>' : '');
-      return '<li' + (x.niet ? ' class="niet"' : '') + '><span class="pt"><b>' + esc(x.t) + '</b><small>' + esc(x.u) + '</small></span>' + rechts + '</li>';
+      var knop = x.ics ? '<br><button type="button" class="ics" data-ics="' + Math.round(x.ics) + '">📅 Zet in je agenda</button>' : '';
+      return '<li' + (x.niet ? ' class="niet"' : '') + '><span class="pt"><b>' + esc(x.t) + '</b><small>' + esc(x.u) + '</small>' + knop + '</span>' + rechts + '</li>';
     }).join('');
     planTotaal = totaal;
     $('plan-tot').innerHTML = totaal > 0.5 && r.extra > 0.5
@@ -353,6 +356,37 @@
       setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
       toast('Afbeelding gedownload');
     }).catch(function () { toast('Afbeelding maken lukte niet'); }).then(function () { knop.disabled = false; });
+  }
+
+
+  // --- Agendaherinnering (.ics) ---
+  function agenda(bedrag) {
+    var nu = new Date(), d = new Date(2027, 0, 2, 9, 0);
+    if (nu >= d) d = new Date(nu.getFullYear(), nu.getMonth() + 1, 1, 9, 0);
+    var p = function (n) { return String(n).padStart(2, '0'); };
+    var dag = d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate());
+    var stamp = nu.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    var tekst = 'Salderen is gestopt. Verhoog je termijnbedrag bij je energieleverancier met ongeveer ' + bedrag + ' euro per maand, zo voorkom je een naheffing. Je plan: https://salderingscheck-nl.netlify.app/';
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Salderingscheck//NL', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
+      'UID:voorschot-' + dag + '@salderingscheck', 'DTSTAMP:' + stamp, 'DTSTART;VALUE=DATE:' + dag,
+      'SUMMARY:Termijnbedrag energie aanpassen', 'DESCRIPTION:' + tekst.replace(/,/g, '\\,'),
+      'BEGIN:VALARM', 'TRIGGER:PT9H', 'ACTION:DISPLAY', 'DESCRIPTION:Termijnbedrag energie aanpassen', 'END:VALARM',
+      'END:VEVENT', 'END:VCALENDAR'].map(function (r) { var o = []; while (r.length > 70) { o.push(r.slice(0, 70)); r = ' ' + r.slice(70); } o.push(r); return o.join('\r\n'); }).join('\r\n');
+    var url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+    var a = document.createElement('a'); a.href = url; a.download = 'termijnbedrag-aanpassen.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    toast('Herinnering gedownload: open hem om toe te voegen');
+  }
+
+  // --- Vaste uitkomstbalk op de telefoon ---
+  function stickyBalk() {
+    var bar = $('stickybar'); if (!bar || !('IntersectionObserver' in window)) return;
+    var zichtbaar = { res: false, hero: true };
+    var zet = function () { bar.hidden = zichtbaar.res || zichtbaar.hero || !laatste || laatste.extra < 0.5; };
+    new IntersectionObserver(function (e) { zichtbaar.res = e[0].isIntersecting; zet(); }).observe(document.querySelector('.result'));
+    new IntersectionObserver(function (e) { zichtbaar.hero = e[0].isIntersecting; zet(); }).observe(document.querySelector('.hero'));
+    stickyBalk.zet = zet;
   }
 
   function setSave(id, v, leeg) {
@@ -459,6 +493,8 @@
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: titel, event: true }); } catch (e) { /* niet erg */ }
     }
     document.addEventListener('click', function (e) {
+      var ic = e.target.closest && e.target.closest('[data-ics]');
+      if (ic) { tel('klik-agenda', 'Agendaherinnering'); agenda(ic.getAttribute('data-ics')); return; }
       var a = e.target.closest && e.target.closest('a[data-partner]');
       if (a) tel('klik-partner-' + a.getAttribute('data-partner').toLowerCase().replace(/[^a-z0-9]+/g, '-'), a.getAttribute('data-partner'));
     });
@@ -466,6 +502,7 @@
     $('deelbeeld').addEventListener('click', function () { tel('klik-deel-afbeelding', 'Deel als afbeelding'); deelAfbeelding(); });
 
     update();
+    stickyBalk();
 
     if ('serviceWorker' in navigator && location.protocol === 'https:') {
       navigator.serviceWorker.register('/sw.js').catch(function () {});

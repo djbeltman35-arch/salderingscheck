@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Over Salderingscheck: wie, hoe we rekenen en privacy</title>
+<meta name="description" content="Over Salderingscheck: onafhankelijke, gratis rekentool van Erik. Uitleg van de berekening, bronnen, privacy zonder cookies en een gratis widget voor je eigen site.">
+<link rel="canonical" href="https://salderingscheck-nl.netlify.app/over/">
+<script data-goatcounter="https://salderingscheck-nl.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<meta name="theme-color" content="#0f6b4f">
+<link rel="preload" href="/fonts/big-shoulders-display-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/artikel.css">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Salderingscheck">
+<meta property="og:title" content="Over Salderingscheck: wie, hoe we rekenen en privacy">
+<meta property="og:description" content="Over Salderingscheck: onafhankelijke, gratis rekentool van Erik. Uitleg van de berekening, bronnen, privacy zonder cookies en een gratis widget voor je eigen site.">
+<meta property="og:url" content="https://salderingscheck-nl.netlify.app/over/">
+<meta property="og:image" content="https://salderingscheck-nl.netlify.app/icons/og-over.png">
+<meta name="robots" content="max-image-preview:large">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Over Salderingscheck: wie, hoe we rekenen en privacy",
+   "description": "Over Salderingscheck: onafhankelijke, gratis rekentool van Erik. Uitleg van de berekening, bronnen, privacy zonder cookies en een gratis widget voor je eigen site.",
+   "inLanguage": "nl-NL",
+   "datePublished": "2026-11-16",
+   "dateModified": "2026-11-16",
+   "mainEntityOfPage": "https://salderingscheck-nl.netlify.app/over/",
+   "author": {
+    "@type": "Person",
+    "name": "Erik",
+    "email": "erik@beltman.email"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Salderingscheck",
+    "url": "https://salderingscheck-nl.netlify.app/"
+   },
+   "image": "https://salderingscheck-nl.netlify.app/icons/og-over.png"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Salderingscheck",
+     "item": "https://salderingscheck-nl.netlify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Over",
+     "item": "https://salderingscheck-nl.netlify.app/over/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="hero">
+  <svg class="deco" viewBox="0 0 260 260" aria-hidden="true"><g stroke="#f5b400" stroke-width="10" stroke-linecap="round" opacity=".55"><path d="M170 18v24M170 158v24M90 100h24M226 100h24M113 43l17 17M210 140l17 17M113 157l17-17M210 60l17-17"/></g><circle cx="170" cy="100" r="44" fill="#f5b400" opacity=".9"/><g transform="translate(118 168) skewX(-20)" opacity=".75"><rect width="128" height="62" rx="5" fill="#0a3d2f" stroke="#cfe9dd" stroke-width="3"/><path d="M32 0v62M64 0v62M96 0v62M0 31h128" stroke="#cfe9dd" stroke-width="2.5"/></g></svg>
+  <div class="wrap">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="12" fill="#f5b400"/><g stroke="#f5b400" stroke-width="5" stroke-linecap="round"><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.6 13.6l5.6 5.6M44.8 44.8l5.6 5.6M13.6 50.4l5.6-5.6M44.8 19.2l5.6-5.6"/></g></svg></span><b>Salderings<span>check</span></b></a>
+    <nav class="crumbs" aria-label="Kruimelpad"><a href="/">Salderingscheck</a> › Over</nav>
+    <h1>Over de Salderingscheck</h1>
+    <p class="lead">Wie de site maakt, hoe de berekening werkt, wat er met je gegevens gebeurt en hoe je de rekentool op je eigen site zet.</p>
+    <p class="meta">Bijgewerkt op <time datetime="2026-11-16">16 november 2026</time> door Erik</p>
+  </div>
+</header>
+<main class="wrap">
+
+  <section class="card" aria-labelledby="h-wie"><h2 id="h-wie">Wie maakt dit?</h2>
+  <p>Salderingscheck is gemaakt door Erik uit Rijssen. Hij bouwt gratis sites die mensen helpen geld te besparen, zoals Tankwijzer en Goedkope Boodschappen. Er zit geen energieleverancier of batterijfabrikant achter.</p></section>
+  <section class="card" aria-labelledby="h-hoe"><h2 id="h-hoe">Hoe rekenen we?</h2>
+  <ul>
+  <li><b>Opwek:</b> gemiddeld 0,9 kWh per wattpiek per jaar. Ken je je echte cijfers, vul dan de meterstanden in.</li>
+  <li><b>Direct verbruik:</b> standaard 30% van je opwek, met een maximum van de helft van je verbruik.</li>
+  <li><b>2026 met saldering</b> vergelijken we met <b>2027 zonder saldering</b>: wat je teruglevert, krijg je dan alleen nog vergoed tegen de netto terugleververgoeding van je leverancier.</li>
+  <li><b>Netto vergoeding</b> per leverancier komt uit de gepubliceerde tarieven (zie <a href="/terugleverkosten-2027/">terugleverkosten 2027</a>). We controleren dit elke maand.</li>
+  <li><b>Thuisbatterij:</b> 250 laadcycli per jaar, 90% bruikbaar, 90% rendement, levensduur 12 jaar, met afnemende meeropbrengst bij grotere batterijen.</li>
+  </ul>
+  <p>Het blijft een schatting. Je echte uitkomst hangt af van je verbruikspatroon, je contract en het weer.</p></section>
+  <section class="card" aria-labelledby="h-privacy"><h2 id="h-privacy">Privacy</h2>
+  <p>Alles wat je invult blijft op je eigen apparaat; er gaat niets naar een server. We tellen alleen anonieme bezoeken met GoatCounter, zonder cookies en zonder je te volgen op andere sites.</p></section>
+  <section class="card" aria-labelledby="h-geld"><h2 id="h-geld">Hoe verdient deze site geld?</h2>
+  <p>De site is gratis. Bij sommige links naar winkels of vergelijkers kan Erik een kleine vergoeding krijgen als je iets koopt. Dat kost jou niets extra en verandert niets aan de berekening: de uitkomst en de volgorde van leveranciers worden nooit door een partner bepaald. Zulke links zijn gemarkeerd.</p></section>
+  <section class="card" aria-labelledby="h-widget"><h2 id="h-widget">Zet de rekentool op je eigen site</h2>
+  <p>Heb je een site over zonnepanelen, wonen of geld besparen? Plaats de gratis widget met deze code:</p>
+  <pre class="code"><code>&lt;iframe src="https://salderingscheck-nl.netlify.app/embed/" title="Salderingscheck: wat kost het einde van salderen?" width="100%" height="500" style="border:0;max-width:440px" loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
+  <p><a href="/embed/">Bekijk de widget</a>. Gratis, zonder cookies of reclame.</p></section>
+  <section class="card" aria-labelledby="h-contact"><h2 id="h-contact">Fout gezien of een vraag?</h2>
+  <p>Mail Erik: <a href="mailto:erik@beltman.email">erik@beltman.email</a>. Klopt een tarief niet meer, dan passen we het zo snel mogelijk aan.</p></section>
+
+
+  <section class="card" aria-labelledby="h-lees"><h2 id="h-lees">Lees ook</h2><div class="meer"><a href="/"><b>Salderingscheck: bereken het zelf</b><span>Bereken in 1 minuut wat het einde van salderen jou kost.</span></a><a href="/terugleverkosten-2027/"><b>Terugleverkosten 2027 per leverancier</b><span>Netto vergoeding per leverancier op een rij.</span></a><a href="/thuisbatterij-terugverdientijd/"><b>Thuisbatterij: wanneer verdien je hem terug?</b><span>Wanneer een thuisbatterij loont, met rekenvoorbeelden.</span></a><a href="/einde-salderen-wat-nu/"><b>Einde salderen: wat moet je regelen?</b><span>Checklist: dit regel je voor en na 1 januari 2027.</span></a></div></section>
+  <section class="card" aria-labelledby="h-meer"><h2 id="h-meer">Meer gratis bespaarsites</h2><div class="meer"><a href="https://boodschappenvergelijk.nl/"><b>Goedkope Boodschappen</b><span>Zie bij welke supermarkt je boodschappenlijst het goedkoopst is.</span></a><a href="https://goedkopertanken.netlify.app/"><b>Tankwijzer</b><span>Brandstofprijzen in NL, BE en DE: tank goedkoper over de grens.</span></a><a href="https://foutcodezoeker.nl/"><b>Foutcodezoeker</b><span>Wat betekent die foutcode? Repareer je apparaat zelf.</span></a><a href="https://euroroadrules.eu/nl/"><b>EuroRoadRules</b><span>Vignetten, tol en milieuzones in heel Europa.</span></a><a href="https://vluchtwijzer.netlify.app/"><b>Vluchtwijzer</b><span>Vind de goedkoopste vliegtickets.</span></a><a href="https://allesoporde.netlify.app/"><b>Op Orde</b><span>Houd vaste lasten, deadlines en toeslagen bij.</span></a></div></section>
+  <footer>
+    <p>Gemaakt door Erik · <a href="mailto:erik@beltman.email">erik@beltman.email</a> · We tellen alleen anonieme bezoeken, zonder cookies.</p>
+    <p>Aan deze informatie kunnen geen rechten worden ontleend. Controleer tarieven altijd bij je leverancier.</p>
+  </footer>
+</main>
+</body>
+</html>

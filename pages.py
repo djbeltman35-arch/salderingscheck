@@ -41,7 +41,7 @@ def pagina(slug, titel, h1, lead, beschrijving, body, faq, kruimel):
          "datePublished": "2026-11-16", "dateModified": GEWIJZIGD, "mainEntityOfPage": url,
          "author": {"@type": "Person", "name": "Erik", "email": "erik@beltman.email"},
          "publisher": {"@type": "Organization", "name": "Salderingscheck", "url": SITE + "/"},
-         "image": SITE + "/icons/og.png"},
+         "image": f"{SITE}/icons/og-{slug}.png"},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Salderingscheck", "item": SITE + "/"},
             {"@type": "ListItem", "position": 2, "name": kruimel, "item": url}]},
@@ -78,7 +78,8 @@ def pagina(slug, titel, h1, lead, beschrijving, body, faq, kruimel):
 <meta property="og:title" content="{e(titel)}">
 <meta property="og:description" content="{e(beschrijving)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/icons/og.png">
+<meta property="og:image" content="{SITE}/icons/og-{slug}.png">
+<meta name="robots" content="max-image-preview:large">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -338,6 +339,31 @@ WATNU_FAQ = [
      "Zelf meer zonnestroom gebruiken is gratis en levert het meest op. Daarna: een leverancier kiezen met een goede netto terugleververgoeding, en alleen een thuisbatterij kopen als die zich binnen de levensduur terugverdient."),
 ]
 
+
+OVER_BODY = f'''
+  <section class="card" aria-labelledby="h-wie"><h2 id="h-wie">Wie maakt dit?</h2>
+  <p>Salderingscheck is gemaakt door Erik uit Rijssen. Hij bouwt gratis sites die mensen helpen geld te besparen, zoals Tankwijzer en Goedkope Boodschappen. Er zit geen energieleverancier of batterijfabrikant achter.</p></section>
+  <section class="card" aria-labelledby="h-hoe"><h2 id="h-hoe">Hoe rekenen we?</h2>
+  <ul>
+  <li><b>Opwek:</b> gemiddeld 0,9 kWh per wattpiek per jaar. Ken je je echte cijfers, vul dan de meterstanden in.</li>
+  <li><b>Direct verbruik:</b> standaard 30% van je opwek, met een maximum van de helft van je verbruik.</li>
+  <li><b>2026 met saldering</b> vergelijken we met <b>2027 zonder saldering</b>: wat je teruglevert, krijg je dan alleen nog vergoed tegen de netto terugleververgoeding van je leverancier.</li>
+  <li><b>Netto vergoeding</b> per leverancier komt uit de gepubliceerde tarieven (zie <a href="/terugleverkosten-2027/">terugleverkosten 2027</a>). We controleren dit elke maand.</li>
+  <li><b>Thuisbatterij:</b> 250 laadcycli per jaar, 90% bruikbaar, 90% rendement, levensduur 12 jaar, met afnemende meeropbrengst bij grotere batterijen.</li>
+  </ul>
+  <p>Het blijft een schatting. Je echte uitkomst hangt af van je verbruikspatroon, je contract en het weer.</p></section>
+  <section class="card" aria-labelledby="h-privacy"><h2 id="h-privacy">Privacy</h2>
+  <p>Alles wat je invult blijft op je eigen apparaat; er gaat niets naar een server. We tellen alleen anonieme bezoeken met GoatCounter, zonder cookies en zonder je te volgen op andere sites.</p></section>
+  <section class="card" aria-labelledby="h-geld"><h2 id="h-geld">Hoe verdient deze site geld?</h2>
+  <p>De site is gratis. Bij sommige links naar winkels of vergelijkers kan Erik een kleine vergoeding krijgen als je iets koopt. Dat kost jou niets extra en verandert niets aan de berekening: de uitkomst en de volgorde van leveranciers worden nooit door een partner bepaald. Zulke links zijn gemarkeerd.</p></section>
+  <section class="card" aria-labelledby="h-widget"><h2 id="h-widget">Zet de rekentool op je eigen site</h2>
+  <p>Heb je een site over zonnepanelen, wonen of geld besparen? Plaats de gratis widget met deze code:</p>
+  <pre class="code"><code>&lt;iframe src="{SITE}/embed/" title="Salderingscheck: wat kost het einde van salderen?" width="100%" height="500" style="border:0;max-width:440px" loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
+  <p><a href="/embed/">Bekijk de widget</a>. Gratis, zonder cookies of reclame.</p></section>
+  <section class="card" aria-labelledby="h-contact"><h2 id="h-contact">Fout gezien of een vraag?</h2>
+  <p>Mail Erik: <a href="mailto:erik@beltman.email">erik@beltman.email</a>. Klopt een tarief niet meer, dan passen we het zo snel mogelijk aan.</p></section>
+'''
+
 TE_BOUWEN = [
     ("terugleverkosten-2027", "Terugleverkosten 2027 per leverancier: wat houd je netto over?",
      "Terugleverkosten 2027 per leverancier", "Vergoeding, terugleverkosten en wat je netto overhoudt per teruggeleverde kWh, voor alle bekende leveranciers op een rij.",
@@ -351,6 +377,10 @@ TE_BOUWEN = [
      "Einde salderen: wat moet je nu regelen?", "Zes stappen om je voor te bereiden op 1 januari 2027, als de salderingsregeling stopt.",
      "Einde salderingsregeling op 1 januari 2027: checklist met zes stappen. Kosten berekenen, leverancier vergelijken, zelf meer verbruiken, voorschot aanpassen en eerlijk over de thuisbatterij.",
      WATNU_BODY, WATNU_FAQ, "Einde salderen: wat nu?"),
+    ("over", "Over Salderingscheck: wie, hoe we rekenen en privacy",
+     "Over de Salderingscheck", "Wie de site maakt, hoe de berekening werkt, wat er met je gegevens gebeurt en hoe je de rekentool op je eigen site zet.",
+     "Over Salderingscheck: onafhankelijke, gratis rekentool van Erik. Uitleg van de berekening, bronnen, privacy zonder cookies en een gratis widget voor je eigen site.",
+     OVER_BODY, None, "Over"),
 ]
 
 if __name__ == "__main__":
