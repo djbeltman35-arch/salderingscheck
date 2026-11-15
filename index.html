@@ -7,6 +7,8 @@
 <meta name="description" content="Bereken in 1 minuut wat het einde van de salderingsregeling op 1 januari 2027 jou kost, en of een thuisbatterij, ander contract of slimmer verbruik loont. Gratis, onafhankelijk en zonder registratie.">
 <link rel="canonical" href="https://salderingscheck-nl.netlify.app/">
 <meta name="theme-color" content="#0f6b4f">
+<link rel="preload" href="/fonts/big-shoulders-display-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -81,16 +83,40 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
 a{color:var(--brand)}
 .wrap{max-width:760px;margin:0 auto;padding:0 16px}
-header.top{background:linear-gradient(135deg,#0f6b4f,#14805e);color:#fff;padding:22px 0 64px}
-header.top .wrap{display:flex;flex-direction:column;gap:8px}
-.brandrow{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:.2px}
-.brandrow svg{width:30px;height:30px}
-h1{font-size:1.6rem;line-height:1.2;margin:6px 0 0}
-.lead{margin:0;opacity:.92}
-.badge{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:4px 12px;font-size:.88rem;font-weight:600}
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/big-shoulders-display-800.woff2) format('woff2')}
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:900;font-display:swap;src:url(/fonts/big-shoulders-display-900.woff2) format('woff2')}
+@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/atkinson-hyperlegible-400.woff2) format('woff2')}
+@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/atkinson-hyperlegible-700.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/jetbrains-mono-500.woff2) format('woff2')}
+.hero{position:relative;overflow:hidden;color:#eaf5ef;padding:18px 0 64px;border-bottom:4px solid var(--sun);
+  background:radial-gradient(110% 80% at 100% 0%,rgba(245,180,0,.30) 0%,rgba(245,180,0,0) 48%),linear-gradient(160deg,#0c5a43 0%,#0f6b4f 45%,#0a4a38 100%)}
+.hero .deco{position:absolute;right:-60px;top:60px;width:220px;height:220px;opacity:.8;pointer-events:none}
+@media (min-width:700px){.hero .deco{right:4%;top:40px;width:280px;height:280px;opacity:.95}}
+.hero-in{position:relative;display:flex;flex-direction:column;gap:12px}
+.hero .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .mark{width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.brand .mark svg{width:30px;height:30px}
+.brand b{font-family:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;font-weight:900;font-size:2.05rem;line-height:1;letter-spacing:.5px;color:#fff;text-transform:uppercase}
+.brand b span{background:var(--sun);color:#1a1405;padding:0 6px;margin-left:2px;border-radius:3px}
+.status{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.85rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 3px rgba(245,180,0,.3);animation:puls 1.8s infinite}
+@keyframes puls{50%{box-shadow:0 0 0 6px rgba(245,180,0,0)}}
+@media (prefers-reduced-motion:reduce){.status i{animation:none}}
+h1{font-family:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:2.6rem;line-height:.98;letter-spacing:.3px;margin:6px 0 0;color:#fff;max-width:13ch;text-shadow:0 2px 12px rgba(0,0,0,.18)}
+.lead{margin:0;opacity:.95;font-size:1.02rem;max-width:46ch}
+.meters{display:grid;grid-template-columns:repeat(3,1fr);background:#08362a;border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 10px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06);margin-top:4px}
+.meter{padding:12px 12px 12px 14px;border-left:1px solid rgba(255,255,255,.1)}
+.meter:first-child{border-left:0}
+.meter .lab{font-size:.78rem;color:#b9d8c9;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.meter .led{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:700;color:var(--sun);font-size:1.75rem;line-height:1.1;margin:4px 0 2px;text-shadow:0 0 14px rgba(245,180,0,.35);white-space:nowrap}
+.meter .led small{font-size:.8rem;margin-left:3px;opacity:.85}
+.meter .src{font-size:.75rem;color:#9cc2b1}
+@media (max-width:440px){.brand b{font-size:1.7rem}.brand .mark{width:38px;height:38px;border-radius:10px}.brand .mark svg{width:26px;height:26px}.status{font-size:.76rem;padding:5px 10px;gap:6px}}
+@media (max-width:370px){.meter .led{font-size:1.4rem}.brand b{font-size:1.5rem}h1{font-size:2.25rem}.status{font-size:.7rem}}
 main{margin-top:-44px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
 .card h2{font-size:1.15rem;margin:0 0 12px}
@@ -147,7 +173,7 @@ details[open] summary::before{content:"▾ ";}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .partner{font-size:.78rem;color:var(--muted);margin-top:6px}
 .tip{background:var(--sun-soft);border-radius:12px;padding:12px 14px;font-size:.92rem;margin-top:12px}
-.todo{box-shadow:0 8px 24px rgba(0,0,0,.18);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:12px 14px;margin:6px 0 4px;font-size:.93rem}
+.todo{box-shadow:0 8px 24px rgba(0,0,0,.18);background:rgba(255,255,255,.10);backdrop-filter:blur(2px);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:12px 14px;margin:6px 0 4px;font-size:.93rem}
 .todo ol{margin:6px 0 8px;padding-left:20px}
 .todo li{margin-bottom:4px}
 .todo b{color:#ffd54a}
@@ -178,18 +204,30 @@ footer a{color:var(--muted)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .hidden{display:none!important}
 #install{display:none}
-@media print{header.top{padding-bottom:16px;background:none;color:#000}main{margin-top:0}.actions,#install,.info,footer .sites{display:none}}
+@media print{.hero{padding-bottom:16px;background:none;color:#000}.hero .deco,.meters{display:none}main{margin-top:0}.actions,#install,.info,footer .sites{display:none}}
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <div class="brandrow">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="13" fill="#f5b400"/><g stroke="#f5b400" stroke-width="5" stroke-linecap="round"><path d="M32 5v8M32 51v8M5 32h8M51 32h8M12.9 12.9l5.7 5.7M45.4 45.4l5.7 5.7M12.9 51.1l5.7-5.7M45.4 18.6l5.7-5.7"/></g></svg>
-      Salderingscheck
+<header class="hero">
+  <svg class="deco" viewBox="0 0 260 260" aria-hidden="true">
+    <g stroke="#f5b400" stroke-width="10" stroke-linecap="round" opacity=".55"><path d="M170 18v24M170 158v24M90 100h24M226 100h24M113 43l17 17M210 140l17 17M113 157l17-17M210 60l17-17"/></g>
+    <circle cx="170" cy="100" r="44" fill="#f5b400" opacity=".9"/>
+  </svg>
+  <div class="wrap hero-in">
+    <div class="top">
+      <a class="brand" href="/" aria-label="Salderingscheck, naar de start">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="12" fill="#f5b400"/><g stroke="#f5b400" stroke-width="5" stroke-linecap="round"><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.6 13.6l5.6 5.6M44.8 44.8l5.6 5.6M13.6 50.4l5.6-5.6M44.8 19.2l5.6-5.6"/></g></svg></span>
+        <b>Saldering<span>check</span></b>
+      </a>
+      <span class="status"><i></i><span id="countdown">1 jan 2027</span></span>
     </div>
     <h1>Wat kost het einde van salderen jou?</h1>
-    <p class="lead">Bereken in 1 minuut wat je vanaf 2027 extra betaalt, en wat het slimst is om te doen. Gratis, onafhankelijk, zonder account.</p>
+    <p class="lead">Zie in 1 minuut wat je vanaf 2027 extra betaalt, en wat het slimst is om te doen. Gratis, onafhankelijk en zonder account.</p>
+    <section class="meters" aria-label="Kerncijfers">
+      <div class="meter"><div class="lab">Salderen stopt</div><div class="led" id="ledDagen">47<small>dgn</small></div><div class="src">op 1 jan 2027</div></div>
+      <div class="meter"><div class="lab">Terug&shy;levering</div><div class="led">0,5<small>ct</small></div><div class="src">netto per kWh</div></div>
+      <div class="meter"><div class="lab">Jij betaalt</div><div class="led" id="heroExtra">€536</div><div class="src">extra per jaar</div></div>
+    </section>
     <div class="todo" aria-label="Wat kun je eraan doen?">
       <strong>Wat kun je eraan doen?</strong>
       <ol>
@@ -199,7 +237,6 @@ footer a{color:var(--muted)}
       </ol>
       <a href="#h-invoer" class="todo-cta">Bereken wat het jou kost en oplevert ↓</a>
     </div>
-    <span class="badge" id="countdown">Salderen stopt op 1 januari 2027</span>
   </div>
 </header>
 

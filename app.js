@@ -150,6 +150,7 @@
     $('extra').className = 'big ' + (extra > 0.5 ? 'bad' : 'good');
     $('uitkomst-intro').textContent = extra > 0.5 ? 'Vanaf 2027 betaal je voor stroom ongeveer' : 'Vanaf 2027 verandert er voor jou weinig:';
     $('extra-sub').textContent = extra > 0.5 ? 'per jaar meer dan nu (± ' + fmtEur(extra / 12) + ' per maand)' : (extra < -0.5 ? 'per jaar minder dan nu' : 'nauwelijks verschil');
+    var he = $('heroExtra'); if (he) he.textContent = fmtEur(Math.max(0, extra)).replace(' ', '');
     $('kostenNu').textContent = fmtEur(r.kostenNu);
     $('kosten27').textContent = fmtEur(r.kosten27);
     var note = p.geschat
@@ -270,7 +271,14 @@
   function aftellen() {
     var eind = new Date('2027-01-01T00:00:00+01:00');
     var dagen = Math.ceil((eind - new Date()) / 86400000);
-    $('countdown').textContent = dagen > 1 ? 'Nog ' + dagen + ' dagen salderen' : (dagen === 1 ? 'Morgen stopt salderen' : 'Salderen is gestopt op 1 januari 2027');
+    var led = $('ledDagen');
+    if (dagen > 0) {
+      $('countdown').textContent = dagen === 1 ? 'Morgen stopt salderen' : 'Nog ' + dagen + ' dagen';
+      if (led) led.innerHTML = dagen + '<small>' + (dagen === 1 ? 'dag' : 'dgn') + '</small>';
+    } else {
+      $('countdown').textContent = 'Salderen is gestopt';
+      if (led) { led.innerHTML = '0<small>dgn</small>'; led.nextElementSibling.textContent = 'sinds 1 jan 2027'; led.previousElementSibling.textContent = 'Salderen gestopt'; }
+    }
   }
 
   function toast(t) {
