@@ -36,7 +36,7 @@
   var eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
   var nr = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 0 });
   var nr1 = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 1 });
-  function fmtEur(v) { var r = Math.round(v); return (r < 0 ? '−' : '') + eur.format(Math.abs(r)).replace(/\u00a0/g, ' '); }
+  function fmtEur(v) { var r = Math.round(v); return (r < 0 ? '−' : '') + eur.format(Math.abs(r)).replace(/\s/g, '\u00a0'); }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
 
   // --- Opslaan en laden ---
@@ -150,7 +150,7 @@
     $('extra').className = 'big ' + (extra > 0.5 ? 'bad' : 'good');
     $('uitkomst-intro').textContent = extra > 0.5 ? 'Vanaf 2027 betaal je voor stroom ongeveer' : 'Vanaf 2027 verandert er voor jou weinig:';
     $('extra-sub').textContent = extra > 0.5 ? 'per jaar meer dan nu (± ' + fmtEur(extra / 12) + ' per maand)' : (extra < -0.5 ? 'per jaar minder dan nu' : 'nauwelijks verschil');
-    var he = $('heroExtra'); if (he) he.textContent = fmtEur(Math.max(0, extra)).replace(' ', '');
+    var he = $('heroExtra'); if (he) he.textContent = fmtEur(Math.max(0, extra)).replace(/\s/g, '');
     $('kostenNu').textContent = fmtEur(r.kostenNu);
     $('kosten27').textContent = fmtEur(r.kosten27);
     var note = p.geschat
@@ -242,8 +242,117 @@
     box.querySelectorAll('.opt').forEach(function (el) { el.classList.remove('top'); });
     if (waarde[volgorde[0]] > 0) $(volgorde[0]).classList.add('top');
 
+    renderPlan(r, c, s, b);
+
     var heeftAff = Object.keys(PARTNERS).some(function (k) { return PARTNERS[k].some(function (x) { return x.affiliate; }); });
     $('disclosure').classList.toggle('hidden', !heeftAff);
+  }
+
+
+  // --- Persoonlijk actieplan ---
+  var planTotaal = 0;
+  function renderPlan(r, c, s, b) {
+    var inp = lees();
+    var stappen = [];
+    var totaal = 0;
+    if (c.besparing > 0.5) {
+      stappen.push({ t: c.altType === 'dynamisch' ? 'Stap over naar een dynamisch contract' : 'Kies een leverancier met hogere vergoeding',
+        u: c.altType === 'dynamisch' ? 'Meer netto per teruggeleverde kWh' : 'Bijvoorbeeld ' + c.besteNaam + '. Vergelijk ook de stroomprijs.',
+        w: c.besparing, l: 'Gratis' });
+      totaal += c.besparing;
+    }
+    if (s.gekozen) {
+      if (s.besparing > 0.5) { stappen.push({ t: 'Laat je apparaten overdag draaien', u: 'De apparaten die je hebt aangevinkt', w: s.besparing, l: 'Gratis' }); totaal += s.besparing; }
+    } else {
+      var pot = SC.bereken(Object.assign({}, inp, { apparaten: ['was', 'vaat', 'droger'] })).opties.filter(function (o) { return o.id === 'slim'; })[0];
+      if (pot && pot.besparing > 0.5) { stappen.push({ t: 'Was, droog en vaat overdag', u: 'Uitgestelde start of slimme stekker', w: pot.besparing, l: 'Gratis' }); totaal += pot.besparing; }
+    }
+    var kandidaten = [b.beste];
+    if (state.batterijType !== 'plugin') {
+      var alt = SC.bereken(Object.assign({}, inp, { batterijType: 'plugin', batterijCap: 2.7, batterijPrijs: '' })).opties.filter(function (o) { return o.id === 'batterij'; })[0];
+      if (alt && alt.beste) kandidaten.push(alt.beste);
+    }
+    var bb = kandidaten.filter(Boolean).sort(function (x, y) { return y.nettoLevensduur - x.nettoLevensduur; })[0];
+    if (bb && bb.nettoLevensduur > 0) {
+      stappen.push({ t: 'Overweeg een ' + (bb.type === 'plugin' ? 'plug-and-play ' : '') + 'batterij van ' + nr1.format(bb.cap) + ' kWh',
+        u: 'Terugverdiend in ' + nr1.format(bb.terugverdientijd) + ' jaar, aanschaf ± ' + fmtEur(bb.kosten), w: bb.besparing, l: 'Investering' });
+      totaal += bb.besparing;
+    } else {
+      stappen.push({ t: 'Een thuisbatterij loont voor jou nu niet', u: r.profiel.teruglevering < 1 ? 'Je levert geen stroom terug, dus er valt niets op te slaan' : 'Pas bij een prijs rond € 300 per kWh of lager', niet: true });
+    }
+    if (r.extra > 0.5) {
+      var rest = Math.max(0, r.extra - totaal);
+      stappen.push({ t: 'Verhoog je termijnbedrag per 1 januari', u: 'Met ± ' + fmtEur(rest / 12) + ' per maand, zo voorkom je een naheffing', l: 'Voorkom naheffing', geen: true });
+    }
+    $('plan').innerHTML = stappen.map(function (x) {
+      var rechts = x.w ? '<span class="pw">+' + fmtEur(x.w) + '<small>per jaar · ' + esc(x.l) + '</small></span>' : (x.l ? '<span class="pw"><small>' + esc(x.l) + '</small></span>' : '');
+      return '<li' + (x.niet ? ' class="niet"' : '') + '><span class="pt"><b>' + esc(x.t) + '</b><small>' + esc(x.u) + '</small></span>' + rechts + '</li>';
+    }).join('');
+    planTotaal = totaal;
+    $('plan-tot').innerHTML = totaal > 0.5 && r.extra > 0.5
+      ? 'Samen bespaar je hiermee ± <b>' + fmtEur(totaal) + ' per jaar</b>. Je extra kosten dalen dan van ' + fmtEur(r.extra) + ' naar ± ' + fmtEur(Math.max(0, r.extra - totaal)) + '.'
+      : '';
+  }
+
+  // --- Deelbare afbeelding ---
+  function maakAfbeelding() {
+    var r = laatste; if (!r) return Promise.reject();
+    var W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    var x = cv.getContext('2d');
+    var fonts = ['800 80px "Big Shoulders Display"', '400 40px "Atkinson Hyperlegible"', '700 40px "Atkinson Hyperlegible"'];
+    return Promise.all(fonts.map(function (f) { return document.fonts ? document.fonts.load(f).catch(function () {}) : null; })).then(function () {
+      var g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#0c5a43'); g.addColorStop(.5, '#0f6b4f'); g.addColorStop(1, '#0a4a38');
+      x.fillStyle = g; x.fillRect(0, 0, W, H);
+      var rg = x.createRadialGradient(W, 0, 0, W, 0, 700); rg.addColorStop(0, 'rgba(245,180,0,.35)'); rg.addColorStop(1, 'rgba(245,180,0,0)');
+      x.fillStyle = rg; x.fillRect(0, 0, W, H);
+      // zon
+      x.save(); x.globalAlpha = .55; x.translate(900, 260); x.strokeStyle = '#f5b400'; x.lineWidth = 26; x.lineCap = 'round';
+      for (var i = 0; i < 8; i++) { x.rotate(Math.PI / 4); x.beginPath(); x.moveTo(0, 150); x.lineTo(0, 215); x.stroke(); }
+      x.globalAlpha = .9; x.fillStyle = '#f5b400'; x.beginPath(); x.arc(0, 0, 110, 0, Math.PI * 2); x.fill(); x.restore();
+      x.fillStyle = '#f5b400'; x.fillRect(0, H - 14, W, 14);
+      // logo
+      x.font = '900 64px "Big Shoulders Display", Impact, sans-serif'; x.textBaseline = 'alphabetic';
+      x.fillStyle = '#fff'; x.fillText('SALDERINGS', 80, 140);
+      var lw = x.measureText('SALDERINGS').width;
+      x.fillStyle = '#f5b400'; x.fillRect(80 + lw + 8, 86, x.measureText('CHECK').width + 20, 68);
+      x.fillStyle = '#1a1405'; x.fillText('CHECK', 80 + lw + 18, 140);
+      // tekst
+      x.fillStyle = '#fff'; x.font = '800 92px "Big Shoulders Display", Impact, sans-serif';
+      var extra = Math.max(0, r.extra);
+      ['HET EINDE VAN', 'SALDEREN KOST', 'MIJ'].forEach(function (t, k) { x.fillText(t, 80, 330 + k * 96); });
+      x.fillStyle = '#f5b400'; x.font = '800 230px "Big Shoulders Display", Impact, sans-serif';
+      x.fillText(fmtEur(extra).replace(/\s/g, ''), 72, 760);
+      x.fillStyle = '#fff'; x.font = '700 52px "Atkinson Hyperlegible", sans-serif';
+      x.fillText('per jaar extra (± ' + fmtEur(extra / 12) + ' per maand)', 80, 840);
+      if (planTotaal > 0.5) {
+        x.fillStyle = 'rgba(255,255,255,.12)'; x.fillRect(80, 900, W - 160, 150);
+        x.fillStyle = '#d8efe5'; x.font = '400 40px "Atkinson Hyperlegible", sans-serif';
+        x.fillText('Met mijn actieplan bespaar ik', 110, 960);
+        x.fillStyle = '#fff'; x.font = '700 52px "Atkinson Hyperlegible", sans-serif';
+        x.fillText('± ' + fmtEur(planTotaal) + ' per jaar', 110, 1025);
+      }
+      x.fillStyle = '#fff'; x.beginPath();
+      if (x.roundRect) x.roundRect(60, 1110, W - 120, 180, 36); else x.rect(60, 1110, W - 120, 180);
+      x.fill();
+      x.fillStyle = '#14231c'; x.font = '400 40px "Atkinson Hyperlegible", sans-serif'; x.fillText('Wat kost het jou? Reken het gratis uit:', 100, 1180);
+      x.fillStyle = '#0f6b4f'; x.font = '700 50px "Atkinson Hyperlegible", sans-serif'; x.fillText('salderingscheck-nl.netlify.app', 100, 1250);
+      return new Promise(function (res, rej) { cv.toBlob(function (bl) { bl ? res(bl) : rej(); }, 'image/png'); });
+    });
+  }
+
+  function deelAfbeelding() {
+    var knop = $('deelbeeld'); knop.disabled = true;
+    maakAfbeelding().then(function (blob) {
+      var file = new File([blob], 'mijn-salderingscheck.png', { type: 'image/png' });
+      var tekst = 'Het einde van salderen kost mij ' + fmtEur(Math.max(0, laatste.extra)) + ' per jaar. Wat kost het jou? https://salderingscheck-nl.netlify.app/';
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        return navigator.share({ files: [file], text: tekst, title: 'Mijn Salderingscheck' }).catch(function () {});
+      }
+      var url = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = url; a.download = 'mijn-salderingscheck.png'; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+      toast('Afbeelding gedownload');
+    }).catch(function () { toast('Afbeelding maken lukte niet'); }).then(function () { knop.disabled = false; });
   }
 
   function setSave(id, v, leeg) {
@@ -353,7 +462,8 @@
       var a = e.target.closest && e.target.closest('a[data-partner]');
       if (a) tel('klik-partner-' + a.getAttribute('data-partner').toLowerCase().replace(/[^a-z0-9]+/g, '-'), a.getAttribute('data-partner'));
     });
-    $('deel').addEventListener('click', function () { tel('klik-delen', 'Deel mijn uitkomst'); });
+    $('deel').addEventListener('click', function () { tel('klik-delen', 'Deel link'); });
+    $('deelbeeld').addEventListener('click', function () { tel('klik-deel-afbeelding', 'Deel als afbeelding'); deelAfbeelding(); });
 
     update();
 
