@@ -93,7 +93,7 @@ a{color:var(--brand)}
 @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500 700;font-display:swap;src:url(/fonts/jetbrains-mono-500.woff2) format('woff2')}
 .hero{position:relative;overflow:hidden;color:#eaf5ef;padding:18px 0 64px;border-bottom:4px solid var(--sun);
   background:radial-gradient(110% 80% at 100% 0%,rgba(245,180,0,.30) 0%,rgba(245,180,0,0) 48%),linear-gradient(160deg,#0c5a43 0%,#0f6b4f 45%,#0a4a38 100%)}
-.hero .deco{position:absolute;right:-60px;top:60px;width:220px;height:220px;opacity:.8;pointer-events:none}
+.hero .deco{position:absolute;right:-60px;top:-8px;width:230px;height:230px;opacity:.85;pointer-events:none}
 @media (min-width:700px){.hero .deco{right:4%;top:40px;width:280px;height:280px;opacity:.95}}
 .hero-in{position:relative;display:flex;flex-direction:column;gap:12px}
 .hero .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
@@ -214,6 +214,7 @@ footer a{color:var(--muted)}
   <svg class="deco" viewBox="0 0 260 260" aria-hidden="true">
     <g stroke="#f5b400" stroke-width="10" stroke-linecap="round" opacity=".55"><path d="M170 18v24M170 158v24M90 100h24M226 100h24M113 43l17 17M210 140l17 17M113 157l17-17M210 60l17-17"/></g>
     <circle cx="170" cy="100" r="44" fill="#f5b400" opacity=".9"/>
+    <g transform="translate(118 168) skewX(-20)" opacity=".75"><rect width="128" height="62" rx="5" fill="#0a3d2f" stroke="#cfe9dd" stroke-width="3"/><path d="M32 0v62M64 0v62M96 0v62M0 31h128" stroke="#cfe9dd" stroke-width="2.5"/><path d="M6 6h20" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".5"/></g>
   </svg>
   <div class="wrap hero-in">
     <div class="top">
