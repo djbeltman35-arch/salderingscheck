@@ -36,7 +36,7 @@
   var eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
   var nr = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 0 });
   var nr1 = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 1 });
-  function fmtEur(v) { return eur.format(Math.round(v)).replace(/ /g, ' '); }
+  function fmtEur(v) { var r = Math.round(v); return (r < 0 ? '−' : '') + eur.format(Math.abs(r)).replace(/\u00a0/g, ' '); }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
 
   // --- Opslaan en laden ---
