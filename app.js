@@ -327,6 +327,16 @@
       installEvt.userChoice.finally(function () { installEvt = null; $('install').style.display = 'none'; });
     });
 
+    // Klikken op partnerlinks en delen tellen (anoniem, GoatCounter)
+    function tel(pad, titel) {
+      try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: pad, title: titel, event: true }); } catch (e) { /* niet erg */ }
+    }
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-partner]');
+      if (a) tel('klik-partner-' + a.getAttribute('data-partner').toLowerCase().replace(/[^a-z0-9]+/g, '-'), a.getAttribute('data-partner'));
+    });
+    $('deel').addEventListener('click', function () { tel('klik-delen', 'Deel mijn uitkomst'); });
+
     update();
 
     if ('serviceWorker' in navigator && location.protocol === 'https:') {
