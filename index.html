@@ -18,6 +18,10 @@
 <meta property="og:description" content="Gratis rekentool: zie wat je vanaf 2027 extra betaalt en of een thuisbatterij voor jou loont.">
 <meta property="og:url" content="https://salderingscheck-nl.netlify.app/">
 <meta property="og:image" content="https://salderingscheck-nl.netlify.app/icons/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Salderingscheck: wat kost het einde van salderen jou in 2027?">
+<meta property="og:site_name" content="Salderingscheck">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -67,7 +71,7 @@
 :root{
   --bg:#f5f7f4;--card:#ffffff;--ink:#14231c;--muted:#5b6b63;--line:#dfe6e1;
   --brand:#0f6b4f;--brand-2:#0b5540;--sun:#f5b400;--sun-soft:#fff6d6;
-  --good:#127a3e;--good-soft:#e5f5ea;--bad:#b42318;--bad-soft:#fdecea;--warn:#9a6700;--warn-soft:#fff4d6;
+  --good:#127a3e;--good-soft:#e5f5ea;--bad:#b42318;--bad-soft:#fdecea;--warn:#7a5200;--warn-soft:#fff4d6;
   --radius:16px;--shadow:0 3px 8px rgba(10,40,28,.14),0 14px 36px rgba(10,40,28,.24);--shadow-sm:0 1px 3px rgba(10,40,28,.12),0 4px 12px rgba(10,40,28,.12);
 }
 @media (prefers-color-scheme:dark){
@@ -378,8 +382,9 @@ footer a{color:var(--muted)}
   </footer>
 </main>
 
+<noscript><p class="wrap" style="padding:16px">Zet JavaScript aan om de rekentool te gebruiken. De belangrijkste feiten en voorbeelden staan hierboven onder "In het kort".</p></noscript>
 <div class="toast" id="toast" role="status"></div>
-<script src="/calc.js"></script>
-<script src="/app.js"></script>
+<script src="/calc.js" defer></script>
+<script src="/app.js" defer></script>
 </body>
 </html>
