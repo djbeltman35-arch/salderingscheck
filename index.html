@@ -24,6 +24,18 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebPage",
+      "@id": "https://salderingscheck-nl.netlify.app/#webpage",
+      "url": "https://salderingscheck-nl.netlify.app/",
+      "name": "Salderingscheck: wat kost het einde van salderen jou?",
+      "inLanguage": "nl-NL",
+      "datePublished": "2026-11-15",
+      "dateModified": "2026-11-15",
+      "author": { "@type": "Person", "name": "Erik", "email": "erik@beltman.email" },
+      "about": { "@type": "Thing", "name": "Salderingsregeling Nederland, einde per 1 januari 2027" },
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#in-het-kort"] }
+    },
+    {
       "@type": "WebApplication",
       "name": "Salderingscheck",
       "url": "https://salderingscheck-nl.netlify.app/",
@@ -131,6 +143,19 @@ details[open] summary::before{content:"▾ ";}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .partner{font-size:.78rem;color:var(--muted);margin-top:6px}
 .tip{background:var(--sun-soft);border-radius:12px;padding:12px 14px;font-size:.92rem;margin-top:12px}
+.todo{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:12px 14px;margin:6px 0 4px;font-size:.93rem}
+.todo ol{margin:6px 0 8px;padding-left:20px}
+.todo li{margin-bottom:4px}
+.todo b{color:#ffd54a}
+.todo-cta{display:inline-block;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.facts{padding-left:20px;margin:0}
+.facts li{margin-bottom:6px;font-size:.95rem}
+.tabletitle{font-size:1rem;margin:16px 0 8px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:8px 8px;border-bottom:1px solid var(--line)}
+td:not(:first-child),th:not(:first-child){white-space:nowrap}
+th{color:var(--muted);font-weight:600;font-size:.82rem}
 .info details{border-bottom:1px solid var(--line);padding:12px 0}
 .info details:last-child{border-bottom:0}
 .info summary{color:var(--ink);font-size:1rem}
@@ -155,6 +180,15 @@ footer a{color:var(--muted)}
     </div>
     <h1>Wat kost het einde van salderen jou?</h1>
     <p class="lead">Bereken in 1 minuut wat je vanaf 2027 extra betaalt, en wat het slimst is om te doen. Gratis, onafhankelijk, zonder account.</p>
+    <div class="todo" aria-label="Wat kun je eraan doen?">
+      <strong>Wat kun je eraan doen?</strong>
+      <ol>
+        <li><b>Gebruik meer zonnestroom zelf</b>: apparaten aan als de zon schijnt. Gratis.</li>
+        <li><b>Vergelijk je netto terugleververgoeding</b>: een ander contract kan schelen. Kosteloos opzeggen mag als je contract verandert.</li>
+        <li><b>Thuisbatterij?</b> Alleen als hij zich terugverdient. Reken het eerst uit.</li>
+      </ol>
+      <a href="#h-invoer" class="todo-cta">Bereken wat het jou kost en oplevert ↓</a>
+    </div>
     <span class="badge" id="countdown">Salderen stopt op 1 januari 2027</span>
   </div>
 </header>
@@ -250,6 +284,32 @@ footer a{color:var(--muted)}
       <button class="btn ghost" type="button" id="install">Installeer als app</button>
       <button class="btn ghost" type="button" id="reset">Opnieuw beginnen</button>
     </div>
+  </section>
+
+  <section class="card" aria-labelledby="h-kort" id="in-het-kort">
+    <h2 id="h-kort">In het kort: einde salderen 2027</h2>
+    <ul class="facts">
+      <li><strong>Einddatum:</strong> de salderingsregeling stopt op 1 januari 2027, in één keer en zonder afbouw.</li>
+      <li><strong>Terugleververgoeding:</strong> van 2027 tot 2030 minimaal 50% van het kale leveringstarief (stroomprijs zonder belastingen).</li>
+      <li><strong>Terugleverkosten:</strong> bij vaste en variabele contracten in 2027 ongeveer 4,5 tot 6,5 cent per kWh. Netto houd je vaak maar rond 0,5 cent per teruggeleverde kWh over.</li>
+      <li><strong>Dynamisch contract:</strong> bij een flink aantal aanbieders geen terugleverkosten, maar de vergoeding volgt de (lage) marktprijs tijdens zonuren.</li>
+      <li><strong>Gevolg:</strong> zelf je zonnestroom gebruiken bespaart bijna de volle stroomprijs, terugleveren levert bijna niets op.</li>
+      <li><strong>Thuisbatterij:</strong> plug-and-play gemiddeld ruim €400 per kWh, vast €600 tot €850 per kWh. Lonend is vooral een kleine batterij rond €300 per kWh. Geen landelijke subsidie.</li>
+    </ul>
+    <h3 class="tabletitle">Wat kost het einde van salderen? Voorbeelden</h3>
+    <div class="tablewrap">
+      <table>
+        <caption class="sr">Geschatte extra stroomkosten per jaar vanaf 2027, bij een vast of variabel contract en €0,27 per kWh</caption>
+        <thead><tr><th scope="col">Situatie</th><th scope="col">Extra per jaar</th><th scope="col">Per maand</th></tr></thead>
+        <tbody>
+          <tr><td>6 panelen, 2.500 kWh verbruik</td><td><strong>±€400</strong></td><td>±€33</td></tr>
+          <tr><td>10 panelen, 3.000 kWh verbruik</td><td><strong>±€535</strong></td><td>±€45</td></tr>
+          <tr><td>14 panelen, 3.500 kWh verbruik</td><td><strong>±€595</strong></td><td>±€50</td></tr>
+          <tr><td>20 panelen, 4.500 kWh verbruik</td><td><strong>±€740</strong></td><td>±€62</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Panelen van 400 Wp. Uitgangspunten: €0,27 per kWh, 30% direct eigen verbruik, netto vergoeding 2027 €0,005 per kWh, geen terugleverkosten in 2026. Een plug-and-play batterij van 2,7 kWh à €420 per kWh bespaart in deze voorbeelden ongeveer €110 per jaar en verdient zich in ruim 10 jaar terug. Bijgewerkt op <time datetime="2026-11-15">15 november 2026</time> door Erik.</p>
   </section>
 
   <section class="card info" aria-labelledby="h-info">

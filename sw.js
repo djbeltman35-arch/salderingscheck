@@ -1,5 +1,5 @@
 /* Salderingscheck service worker: offline werken, altijd eerst de nieuwste versie proberen */
-var CACHE = 'salderingscheck-v1';
+var CACHE = 'salderingscheck-v2';
 var BESTANDEN = ['/', '/index.html', '/calc.js', '/app.js', '/manifest.webmanifest', '/icons/icon.svg', '/icons/icon-192.png', '/icons/icon-512.png'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(BESTANDEN); }).then(function () { return self.skipWaiting(); }));
