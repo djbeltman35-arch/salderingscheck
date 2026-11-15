@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salderingscheck 2027: wat kost het einde van salderen jou? | Gratis rekentool</title>
+<meta name="description" content="Bereken in 1 minuut wat het einde van de salderingsregeling op 1 januari 2027 jou kost, en of een thuisbatterij, ander contract of slimmer verbruik loont. Gratis, onafhankelijk en zonder registratie.">
+<link rel="canonical" href="https://salderingscheck-nl.netlify.app/">
+<meta name="theme-color" content="#0f6b4f">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Salderingscheck">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Salderingscheck: wat kost het einde van salderen jou?">
+<meta property="og:description" content="Gratis rekentool: zie wat je vanaf 2027 extra betaalt en of een thuisbatterij voor jou loont.">
+<meta property="og:url" content="https://salderingscheck-nl.netlify.app/">
+<meta property="og:image" content="https://salderingscheck-nl.netlify.app/icons/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Salderingscheck",
+      "url": "https://salderingscheck-nl.netlify.app/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Alle",
+      "inLanguage": "nl-NL",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "description": "Bereken wat het einde van de salderingsregeling per 1 januari 2027 jou kost en welke oplossing loont."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Wanneer stopt de salderingsregeling?",
+          "acceptedAnswer": { "@type": "Answer", "text": "De salderingsregeling stopt in één keer op 1 januari 2027. Er is geen afbouw: tot en met 31 december 2026 saldeer je nog volledig, daarna niet meer." } },
+        { "@type": "Question", "name": "Wat krijg ik vanaf 2027 voor teruggeleverde stroom?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Van 2027 tot 2030 moet je leverancier je minimaal 50% van het kale leveringstarief (de stroomprijs zonder belastingen) betalen. Daar gaan wel terugleverkosten per kWh vanaf. Bij vaste en variabele contracten houd je netto vaak minder dan 1 cent per kWh over." } },
+        { "@type": "Question", "name": "Loont een thuisbatterij na 2027?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dat hangt af van je teruglevering, je verbruik 's avonds en de prijs per kWh opslag. Een kleine, goedkope batterij verdient zich het snelst terug; een grote batterij met installatie vaak niet binnen de levensduur. Reken het met deze tool uit voor jouw situatie." } },
+        { "@type": "Question", "name": "Moet ik mijn energiecontract aanpassen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Vergelijk na 2027 vooral de netto terugleververgoeding (vergoeding min terugleverkosten). Bij veel dynamische contracten betaal je geen terugleverkosten. Wijzigt je contract door het einde van salderen, dan mag je kosteloos opzeggen." } },
+        { "@type": "Question", "name": "Verdienen zonnepanelen zich na 2027 nog terug?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, volgens de Rijksoverheid verdienen zonnepanelen zich ook na 2027 terug, maar de terugverdientijd kan langer worden. Hoe meer zonnestroom je zelf gebruikt, hoe beter." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#f5f7f4;--card:#ffffff;--ink:#14231c;--muted:#5b6b63;--line:#dfe6e1;
+  --brand:#0f6b4f;--brand-2:#0b5540;--sun:#f5b400;--sun-soft:#fff6d6;
+  --good:#127a3e;--good-soft:#e5f5ea;--bad:#b42318;--bad-soft:#fdecea;--warn:#9a6700;--warn-soft:#fff4d6;
+  --radius:16px;--shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(15,60,40,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0e1512;--card:#16201b;--ink:#e8efe9;--muted:#9fb0a7;--line:#26332c;
+  --brand:#3fbf8f;--brand-2:#5fd3a5;--sun-soft:#2e2812;--good:#5fd38a;--good-soft:#14301f;--bad:#ff8a80;--bad-soft:#3a1a17;--warn:#f5c451;--warn-soft:#332a10;
+  --shadow:none}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--brand)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.top{background:linear-gradient(135deg,#0f6b4f,#14805e);color:#fff;padding:22px 0 64px}
+header.top .wrap{display:flex;flex-direction:column;gap:8px}
+.brandrow{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:.2px}
+.brandrow svg{width:30px;height:30px}
+h1{font-size:1.6rem;line-height:1.2;margin:6px 0 0}
+.lead{margin:0;opacity:.92}
+.badge{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:4px 12px;font-size:.88rem;font-weight:600}
+main{margin-top:-44px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+.card h2{font-size:1.15rem;margin:0 0 12px}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px;margin-bottom:14px}
+.seg button{flex:1;border:0;background:transparent;color:var(--muted);font:inherit;font-weight:600;padding:9px 6px;border-radius:9px;cursor:pointer;font-size:.92rem}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+label.f{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:.92rem}
+label.f small,.hint{font-weight:400;color:var(--muted);font-size:.82rem}
+.inp{position:relative;display:flex;align-items:center}
+.inp input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;min-height:46px}
+.inp .unit{position:absolute;right:12px;color:var(--muted);font-size:.85rem;pointer-events:none}
+.inp input{padding-right:58px}
+input:focus,select:focus,button:focus-visible,summary:focus-visible{outline:3px solid color-mix(in srgb,var(--brand) 40%,transparent);outline-offset:1px}
+details.more{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+details summary{cursor:pointer;font-weight:600;color:var(--brand);list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸ ";}
+details[open] summary::before{content:"▾ ";}
+.result{border:2px solid var(--brand)}
+.big{font-size:2.3rem;font-weight:800;line-height:1.1;margin:4px 0}
+.big.bad{color:var(--bad)}.big.good{color:var(--good)}
+.sub{color:var(--muted);margin:0}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.compare div{background:var(--bg);border-radius:12px;padding:10px 12px}
+.compare b{display:block;font-size:1.15rem}
+.compare span{color:var(--muted);font-size:.85rem}
+.note{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+.opt{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+.opt.top{border-color:var(--good);box-shadow:0 0 0 1px var(--good) inset}
+.opt h3{margin:0 0 4px;font-size:1.02rem;display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.pill{font-size:.78rem;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.pill.good{background:var(--good-soft);color:var(--good)}.pill.bad{background:var(--bad-soft);color:var(--bad)}.pill.warn{background:var(--warn-soft);color:var(--warn)}.pill.neutral{background:var(--bg);color:var(--muted)}
+.save{font-size:1.25rem;font-weight:800;color:var(--good)}
+.save.zero{color:var(--muted)}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin:10px 0 4px}
+@media (max-width:520px){.checks{grid-template-columns:1fr}}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;cursor:pointer}
+.checks input{width:18px;height:18px;margin-top:2px;accent-color:var(--brand)}
+.range{display:flex;align-items:center;gap:10px;margin:10px 0}
+.range input{flex:1;accent-color:var(--brand)}
+.range output{min-width:70px;text-align:right;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.stats div{background:var(--bg);border-radius:10px;padding:8px 10px}
+.stats b{display:block;font-size:1.02rem}
+.stats span{font-size:.78rem;color:var(--muted)}
+.verdict{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:.92rem}
+.verdict.good{background:var(--good-soft)}.verdict.warn{background:var(--warn-soft)}.verdict.bad{background:var(--bad-soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;border-radius:12px;padding:11px 16px;min-height:46px;border:0;cursor:pointer;text-decoration:none}
+.btn.primary{background:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-2)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.partner{font-size:.78rem;color:var(--muted);margin-top:6px}
+.tip{background:var(--sun-soft);border-radius:12px;padding:12px 14px;font-size:.92rem;margin-top:12px}
+.info details{border-bottom:1px solid var(--line);padding:12px 0}
+.info details:last-child{border-bottom:0}
+.info summary{color:var(--ink);font-size:1rem}
+.info p,.info li{color:var(--ink);font-size:.95rem}
+.info ul{padding-left:20px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#14231c;color:#fff;padding:10px 16px;border-radius:10px;font-size:.92rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+footer{color:var(--muted);font-size:.86rem;padding:8px 0 40px}
+footer a{color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hidden{display:none!important}
+#install{display:none}
+@media print{header.top{padding-bottom:16px;background:none;color:#000}main{margin-top:0}.actions,#install,.info,footer .sites{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="13" fill="#f5b400"/><g stroke="#f5b400" stroke-width="5" stroke-linecap="round"><path d="M32 5v8M32 51v8M5 32h8M51 32h8M12.9 12.9l5.7 5.7M45.4 45.4l5.7 5.7M12.9 51.1l5.7-5.7M45.4 18.6l5.7-5.7"/></g></svg>
+      Salderingscheck
+    </div>
+    <h1>Wat kost het einde van salderen jou?</h1>
+    <p class="lead">Bereken in 1 minuut wat je vanaf 2027 extra betaalt, en wat het slimst is om te doen. Gratis, onafhankelijk, zonder account.</p>
+    <span class="badge" id="countdown">Salderen stopt op 1 januari 2027</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" aria-labelledby="h-invoer">
+    <h2 id="h-invoer">1. Jouw situatie</h2>
+    <div class="seg" role="group" aria-label="Invoermethode">
+      <button type="button" data-modus="schatten" aria-pressed="true">Schatten</button>
+      <button type="button" data-modus="exact" aria-pressed="false">Ik weet mijn cijfers</button>
+    </div>
+
+    <div id="blok-schatten" class="grid">
+      <label class="f">Aantal zonnepanelen
+        <span class="inp"><input id="panelen" type="number" inputmode="numeric" min="0" max="200" step="1" value="10"><span class="unit">stuks</span></span>
+      </label>
+      <label class="f">Vermogen per paneel
+        <span class="inp"><input id="wp" type="number" inputmode="numeric" min="100" max="1000" step="10" value="400"><span class="unit">Wp</span></span>
+        <small>Meestal 300 tot 450 Wp. Staat op de factuur.</small>
+      </label>
+      <label class="f">Totaal stroomverbruik per jaar
+        <span class="inp"><input id="verbruik" type="number" inputmode="numeric" min="0" step="100" value="3000"><span class="unit">kWh</span></span>
+        <small>Gemiddeld huishouden: 2.500 tot 3.500 kWh.</small>
+      </label>
+    </div>
+
+    <div id="blok-exact" class="grid hidden">
+      <label class="f">Stroom van het net per jaar
+        <span class="inp"><input id="afname" type="number" inputmode="numeric" min="0" step="10" value="2000"><span class="unit">kWh</span></span>
+        <small>Op je jaarafrekening: "levering" of "afname" (normaal + dal).</small>
+      </label>
+      <label class="f">Teruggeleverd per jaar
+        <span class="inp"><input id="teruglevering" type="number" inputmode="numeric" min="0" step="10" value="2500"><span class="unit">kWh</span></span>
+        <small>Op je jaarafrekening: "teruglevering" (normaal + dal).</small>
+      </label>
+    </div>
+
+    <div class="grid" style="margin-top:12px">
+      <label class="f">Soort energiecontract
+        <select id="contract">
+          <option value="vast">Vast of variabel</option>
+          <option value="dynamisch">Dynamisch (uurprijzen)</option>
+        </select>
+      </label>
+      <label class="f">Stroomprijs per kWh (alles in)
+        <span class="inp"><input id="stroomprijs" type="number" inputmode="decimal" min="0.05" max="1.5" step="0.01" value="0.27"><span class="unit">€/kWh</span></span>
+        <small>Inclusief belastingen. Weet je het niet? Laat €0,27 staan.</small>
+      </label>
+    </div>
+
+    <details class="more">
+      <summary>Meer instellingen</summary>
+      <div class="grid" style="margin-top:10px">
+        <label class="f">Terugleverkosten nu, per jaar
+          <span class="inp"><input id="tlkNu" type="number" inputmode="decimal" min="0" step="10" value="0"><span class="unit">€/jaar</span></span>
+          <small>Betaal je in 2026 al terugleverkosten? Vul het jaarbedrag in (staat op je jaarafrekening).</small>
+        </label>
+        <label class="f">Vergoeding nu voor je overschot
+          <span class="inp"><input id="vergoedingNu" type="number" inputmode="decimal" step="0.005" value="0.05"><span class="unit">€/kWh</span></span>
+          <small>Voor wat je meer teruglevert dan je afneemt (netto, 2026).</small>
+        </label>
+        <label class="f">Netto vergoeding 2027, vast/variabel
+          <span class="inp"><input id="netto27Vast" type="number" inputmode="decimal" step="0.005" value="0.005"><span class="unit">€/kWh</span></span>
+          <small>Vergoeding min terugleverkosten. Bij veel leveranciers rond 0,5 cent.</small>
+        </label>
+        <label class="f">Netto vergoeding 2027, dynamisch
+          <span class="inp"><input id="netto27Dyn" type="number" inputmode="decimal" step="0.005" value="0.03"><span class="unit">€/kWh</span></span>
+          <small>Schatting: marktprijs tijdens zonuren, vaak zonder terugleverkosten.</small>
+        </label>
+      </div>
+    </details>
+  </section>
+
+  <section class="card result" aria-live="polite" aria-labelledby="h-uitkomst">
+    <h2 id="h-uitkomst">2. Jouw uitkomst</h2>
+    <p class="sub" id="uitkomst-intro">Vanaf 2027 betaal je voor stroom ongeveer</p>
+    <div class="big bad" id="extra">€ 0</div>
+    <p class="sub" id="extra-sub">per jaar meer dan nu</p>
+    <div class="compare">
+      <div><span>2026, met salderen</span><b id="kostenNu">€ 0</b><span>stroomkosten per jaar*</span></div>
+      <div><span>Vanaf 2027</span><b id="kosten27">€ 0</b><span>stroomkosten per jaar*</span></div>
+    </div>
+    <p class="note" id="profiel-note"></p>
+    <p class="note">* Alleen de kosten per kWh, min vergoedingen. Vaste kosten en netbeheer tellen we niet mee, want die veranderen niet door het einde van salderen.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-opties">
+    <h2 id="h-opties">3. Wat kun je eraan doen?</h2>
+    <p class="sub">Gesorteerd op wat het jou per jaar oplevert. Combineren kan.</p>
+    <div id="opties"></div>
+    <div class="actions">
+      <button class="btn primary" type="button" id="deel">Deel mijn uitkomst</button>
+      <button class="btn ghost" type="button" id="install">Installeer als app</button>
+      <button class="btn ghost" type="button" id="reset">Opnieuw beginnen</button>
+    </div>
+  </section>
+
+  <section class="card info" aria-labelledby="h-info">
+    <h2 id="h-info">Goed om te weten</h2>
+    <details>
+      <summary>Wat verandert er op 1 januari 2027?</summary>
+      <p>De salderingsregeling stopt in één keer op 1 januari 2027, zonder afbouw. Nu mag je je teruggeleverde stroom nog wegstrepen tegen je afname, inclusief energiebelasting en btw. Vanaf 2027 betaal je voor alle stroom die je van het net haalt de volle prijs, en krijg je voor teruggeleverde stroom alleen een terugleververgoeding.</p>
+      <p>Hoe meer je teruglevert, hoe groter het verschil. Daarom loont het vanaf 2027 vooral om je zonnestroom zelf te gebruiken.</p>
+    </details>
+    <details>
+      <summary>Terugleververgoeding en terugleverkosten na 2027</summary>
+      <p>Van 2027 tot 2030 moet je leverancier je minimaal 50% van het kale leveringstarief betalen: de stroomprijs zonder energiebelasting en btw. Daar staan terugleverkosten per kWh tegenover. Bij vaste en variabele contracten liggen die in 2027 tussen ongeveer 4,5 en 6,5 cent per kWh, waardoor je netto vaak maar rond een halve cent per kWh overhoudt.</p>
+      <p>Bij een flink aantal dynamische contracten betaal je geen terugleverkosten. Je vergoeding volgt dan wel de marktprijs, en die is laag als de zon fel schijnt. Vergelijk daarom altijd de <strong>netto</strong> vergoeding: vergoeding min terugleverkosten.</p>
+      <p>Wijzigt je contract door het einde van salderen? Dan mag je het kosteloos opzeggen.</p>
+    </details>
+    <details>
+      <summary>Loont een thuisbatterij?</summary>
+      <p>Een thuisbatterij slaat je zonnestroom van overdag op voor 's avonds. Elke opgeslagen kWh bespaart je bijna de volle stroomprijs, in plaats van een halve cent vergoeding. Maar de batterij moet zichzelf wel terugverdienen binnen de levensduur van 10 tot 15 jaar.</p>
+      <ul>
+        <li><strong>Prijs per kWh is alles.</strong> Plug-and-play batterijen kosten gemiddeld ruim €400 per kWh. Vaste installaties €600 tot €850 per kWh. Test-Aankoop adviseert te mikken op rond €300, en niet meer dan €450 per kWh.</li>
+        <li><strong>Niet te groot.</strong> De eerste kWh opslag verdienen het meest. Een te grote batterij vult zich vaak niet helemaal.</li>
+        <li><strong>Plug-and-play:</strong> via het stopcontact mag hij wettelijk maximaal 800 watt terugleveren aan je huis.</li>
+        <li><strong>Btw terugvragen</strong> kan onder voorwaarden, als je handelt in stroom (bijvoorbeeld met een dynamisch contract en energiemanagementsysteem). Je draagt dan wel een vast bedrag van ongeveer €15 per kWh capaciteit af.</li>
+        <li>Een landelijke subsidie voor thuisbatterijen is er in 2026 niet. Pas op voor advertenties die dat beweren.</li>
+      </ul>
+      <p>De ACM waarschuwt dat veel aanbieders het te rooskleurig voorstellen. Deze tool rekent bewust voorzichtig.</p>
+    </details>
+    <details>
+      <summary>Hoe rekent deze tool?</summary>
+      <ul>
+        <li><strong>Schatten:</strong> opwek = aantal panelen × wattpiek × 0,9 kWh per jaar. We gaan uit van 30% direct eigen verbruik (maximaal de helft van je verbruik).</li>
+        <li><strong>2026:</strong> je teruglevering wordt weggestreept tegen je afname. Over een eventueel overschot krijg je de vergoeding die je instelt.</li>
+        <li><strong>2027:</strong> je betaalt al je afname tegen de stroomprijs en krijgt voor alle teruglevering de netto vergoeding.</li>
+        <li><strong>Batterij:</strong> 90% bruikbare capaciteit, 90% rendement, en afnemende meeropbrengst bij grotere batterijen. Maximaal 70% van je teruglevering en 60% van je afname kan via de batterij. Levensduur 12 jaar. Extra opbrengst uit handel tellen we alleen mee als je die zelf invult.</li>
+        <li><strong>Slimmer verbruiken:</strong> grove schatting van het deel dat je per apparaat naar zonuren kunt verschuiven.</li>
+      </ul>
+      <p>Alle berekeningen gebeuren in je eigen browser. We slaan niets op een server op.</p>
+    </details>
+    <details>
+      <summary>Veelgestelde vragen</summary>
+      <p><strong>Geldt het einde ook als mijn vaste contract na 2027 doorloopt?</strong><br>Ja. Het wettelijke einde geldt voor iedereen, ook met een vast contract dat doorloopt.</p>
+      <p><strong>Verdienen zonnepanelen zich nog terug?</strong><br>Ja, volgens de Rijksoverheid ook na 2027, maar het kan langer duren. Hoe meer je zelf gebruikt, hoe sneller.</p>
+      <p><strong>Wat verandert er aan de energiebelasting?</strong><br>De energiebelasting op stroom daalt in 2027 licht, van €0,1108 naar €0,1065 per kWh (inclusief btw). Netbeheerkosten stijgen wel.</p>
+      <p><strong>Ik lever meer terug dan ik verbruik. Wat dan?</strong><br>Dan merk je het einde van salderen extra sterk, omdat je straks voor alle teruglevering alleen de lage vergoeding krijgt. Zelf meer gebruiken (batterij, boiler, auto laden overdag) helpt het meest.</p>
+    </details>
+    <details>
+      <summary>Bronnen</summary>
+      <ul>
+        <li><a href="https://www.rijksoverheid.nl/onderwerpen/energie-thuis/salderingsregeling" rel="noopener" target="_blank">Rijksoverheid: salderingsregeling</a></li>
+        <li><a href="https://selectra.nl/energie/zonnepanelen/salderingsregeling" rel="noopener" target="_blank">Selectra: einde salderingsregeling</a></li>
+        <li><a href="https://www.energievergelijk.nl/nieuws/bij-deze-energieleveranciers-betaal-je-geen-terugleverkosten-in-2027" rel="noopener" target="_blank">Energievergelijk: terugleverkosten 2027</a></li>
+        <li><a href="https://www.keuze.nl/nieuws/salderen-na-2027-van-deze-leveranciers-is-de-vergoeding-bekend" rel="noopener" target="_blank">Keuze.nl: netto terugleververgoeding 2027</a></li>
+        <li><a href="https://www.keuze.nl/nieuws/energiebelasting-2027-stijgt-toch" rel="noopener" target="_blank">Keuze.nl: energiebelasting 2027</a></li>
+        <li><a href="https://www.test-aankoop.be/woning-energie/hernieuwbare-energie/nieuws/beste-plug-and-play-thuisbatterijen" rel="noopener" target="_blank">Test-Aankoop: prijs thuisbatterijen</a></li>
+        <li><a href="https://id.nl/energie-en-klimaat/elektriciteit/batterijen/dit-zijn-de-10-meest-gestelde-vragen-over-thuisbatterijen" rel="noopener" target="_blank">ID.nl: vragen over thuisbatterijen</a></li>
+        <li><a href="https://www.autoblog.nl/nieuws/hoera-de-thuisbatterij-is-eindelijk-betaalbaar-7150321" rel="noopener" target="_blank">Autoblog: ACM over thuisbatterijen</a></li>
+      </ul>
+      <p class="hint">Uitgangspunten bijgewerkt: november 2026. Aan de uitkomst kunnen geen rechten worden ontleend.</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>Gemaakt door Erik · <a href="mailto:erik@beltman.email">erik@beltman.email</a></p>
+    <p class="sites">Meer besparen: <a href="https://goedkopertanken.netlify.app/">Tankwijzer</a> · <a href="https://boodschappenvergelijk.nl/">Goedkope Boodschappen</a></p>
+    <p id="disclosure" class="hidden">Sommige links zijn partnerlinks. Sluit je via zo'n link iets af, dan krijgen wij een kleine vergoeding. Jij betaalt niets extra en het verandert onze berekening niet.</p>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="/calc.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
