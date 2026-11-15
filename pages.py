@@ -39,7 +39,7 @@ def pagina(slug, titel, h1, lead, beschrijving, body, faq, kruimel):
     graph = [
         {"@type": "Article", "headline": titel, "description": beschrijving, "inLanguage": "nl-NL",
          "datePublished": "2026-11-16", "dateModified": GEWIJZIGD, "mainEntityOfPage": url,
-         "author": {"@type": "Person", "name": "Erik", "email": "erik@beltman.email"},
+         "author": {"@type": "Person", "name": "Erik", "email": "djbeltman35@gmail.com"},
          "publisher": {"@type": "Organization", "name": "Salderingscheck", "url": SITE + "/"},
          "image": f"{SITE}/icons/og-{slug}.png"},
         {"@type": "BreadcrumbList", "itemListElement": [
@@ -104,7 +104,7 @@ def pagina(slug, titel, h1, lead, beschrijving, body, faq, kruimel):
   <section class="card" aria-labelledby="h-lees"><h2 id="h-lees">Lees ook</h2><div class="meer">{andere}</div></section>
   <section class="card" aria-labelledby="h-meer"><h2 id="h-meer">Meer gratis bespaarsites</h2><div class="meer">{sites}</div></section>
   <footer>
-    <p>Gemaakt door Erik · <a href="mailto:erik@beltman.email">erik@beltman.email</a> · We tellen alleen anonieme bezoeken, zonder cookies.</p>
+    <p>Gemaakt door Erik · <a href="mailto:djbeltman35@gmail.com">djbeltman35@gmail.com</a> · We tellen alleen anonieme bezoeken, zonder cookies.</p>
     <p>Aan deze informatie kunnen geen rechten worden ontleend. Controleer tarieven altijd bij je leverancier.</p>
   </footer>
 </main>
@@ -361,7 +361,7 @@ OVER_BODY = f'''
   <pre class="code"><code>&lt;iframe src="{SITE}/embed/" title="Salderingscheck: wat kost het einde van salderen?" width="100%" height="500" style="border:0;max-width:440px" loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
   <p><a href="/embed/">Bekijk de widget</a>. Gratis, zonder cookies of reclame.</p></section>
   <section class="card" aria-labelledby="h-contact"><h2 id="h-contact">Fout gezien of een vraag?</h2>
-  <p>Mail Erik: <a href="mailto:erik@beltman.email">erik@beltman.email</a>. Klopt een tarief niet meer, dan passen we het zo snel mogelijk aan.</p></section>
+  <p>Mail Erik: <a href="mailto:djbeltman35@gmail.com">djbeltman35@gmail.com</a>. Klopt een tarief niet meer, dan passen we het zo snel mogelijk aan.</p></section>
 '''
 
 TE_BOUWEN = [
