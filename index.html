@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Salderingscheck 2027: wat kost het einde van salderen jou? | Gratis rekentool</title>
+<title>Salderingscheck 2027: wat kost het einde van salderen jou?</title>
 <meta name="description" content="Bereken in 1 minuut wat het einde van de salderingsregeling op 1 januari 2027 jou kost, en of een thuisbatterij, ander contract of slimmer verbruik loont. Gratis, onafhankelijk en zonder registratie.">
 <link rel="canonical" href="https://salderingscheck-nl.netlify.app/">
 <meta name="theme-color" content="#0f6b4f">
@@ -176,17 +176,29 @@ details[open] summary::before{content:"▾ ";}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .partner{font-size:.78rem;color:var(--muted);margin-top:6px}
 .tip{background:var(--sun-soft);border-radius:12px;padding:12px 14px;font-size:.92rem;margin-top:12px}
-.todo{box-shadow:0 8px 24px rgba(0,0,0,.18);background:rgba(255,255,255,.10);backdrop-filter:blur(2px);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:12px 14px;margin:6px 0 4px;font-size:.93rem}
-.todo ol{margin:6px 0 8px;padding-left:20px}
-.todo li{margin-bottom:4px}
-.todo b{color:#ffd54a}
-.todo-cta{display:inline-block;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.todo{background:rgba(4,40,30,.45);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:14px;box-shadow:0 10px 28px rgba(0,0,0,.25);backdrop-filter:blur(3px)}
+.todo-kop{font-family:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.4px;font-size:1.35rem;color:#fff;margin:0 0 10px}
+.todo-grid{display:grid;gap:8px}
+@media (min-width:700px){.todo-grid{grid-template-columns:repeat(3,1fr)}}
+.todo-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;text-decoration:none;transition:background .15s,transform .15s}
+.todo-item:hover{background:rgba(255,255,255,.14);transform:translateY(-1px)}
+.ti{flex:none;width:42px;height:42px;border-radius:12px;background:var(--sun);display:grid;place-items:center;box-shadow:0 4px 12px rgba(245,180,0,.35)}
+.ti svg{width:24px;height:24px;fill:none;stroke:#1a1405;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.tt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.tt b{font-size:.98rem}
+.tt small{color:#cfe9dd;font-size:.85rem}
+.chip{flex:none;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 8px;background:rgba(95,211,138,.2);color:#b6f0c9;border:1px solid rgba(95,211,138,.35)}
+.chip.alt{background:rgba(245,180,0,.18);color:#ffd977;border-color:rgba(245,180,0,.4)}
+@media (min-width:700px){.todo-item{flex-wrap:wrap;align-items:flex-start}.tt{flex-basis:calc(100% - 60px)}}
+.todo-cta{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:12px;background:var(--sun);color:#1a1405;font-weight:700;font-size:1.02rem;text-decoration:none;border-radius:12px;padding:13px 16px;min-height:48px;box-shadow:0 6px 18px rgba(245,180,0,.35)}
+.todo-cta:hover{filter:brightness(1.05)}
 .sitegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 @media (max-width:520px){.sitegrid{grid-template-columns:1fr}}
 .site{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s}
 .site:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .site b{color:var(--brand)}
 .site span{font-size:.88rem;color:var(--muted)}
+.mt12{margin-top:12px}.mt10{margin-top:10px}.noscript{padding:16px}
 .facts{padding-left:20px;margin:0}
 .facts li{margin-bottom:6px;font-size:.95rem}
 .tabletitle{font-size:1rem;margin:16px 0 8px}
@@ -232,14 +244,26 @@ footer a{color:var(--muted)}
       <div class="meter"><div class="lab">Terug&shy;levering</div><div class="led">0,5<small>ct</small></div><div class="src">netto per kWh</div></div>
       <div class="meter"><div class="lab">Jij betaalt</div><div class="led" id="heroExtra">€536</div><div class="src">extra per jaar</div></div>
     </section>
-    <div class="todo" aria-label="Wat kun je eraan doen?">
-      <strong>Wat kun je eraan doen?</strong>
-      <ol>
-        <li><b>Gebruik meer zonnestroom zelf</b>: apparaten aan als de zon schijnt. Gratis.</li>
-        <li><b>Vergelijk je netto terugleververgoeding</b>: een ander contract kan schelen. Kosteloos opzeggen mag als je contract verandert.</li>
-        <li><b>Thuisbatterij?</b> Alleen als hij zich terugverdient. Reken het eerst uit.</li>
-      </ol>
-      <a href="#h-invoer" class="todo-cta">Bereken wat het jou kost en oplevert ↓</a>
+    <div class="todo" aria-labelledby="todo-kop">
+      <h2 id="todo-kop" class="todo-kop">Wat kun je eraan doen?</h2>
+      <div class="todo-grid">
+        <a class="todo-item" href="#h-opties">
+          <span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></span>
+          <span class="tt"><b>Meer zelf gebruiken</b><small>Apparaten aan bij zon</small></span>
+          <span class="chip">Gratis</span>
+        </a>
+        <a class="todo-item" href="#h-opties">
+          <span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></span>
+          <span class="tt"><b>Ander contract</b><small>Vergelijk de vergoeding</small></span>
+          <span class="chip">Gratis</span>
+        </a>
+        <a class="todo-item" href="#h-opties">
+          <span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10v4M7 10v4M11 10v4"/></svg></span>
+          <span class="tt"><b>Thuisbatterij</b><small>Alleen als hij loont</small></span>
+          <span class="chip alt">Reken eerst</span>
+        </a>
+      </div>
+      <a href="#h-invoer" class="todo-cta">Bereken wat het jou kost <span aria-hidden="true">↓</span></a>
     </div>
   </div>
 </header>
@@ -277,7 +301,7 @@ footer a{color:var(--muted)}
       </label>
     </div>
 
-    <div class="grid" style="margin-top:12px">
+    <div class="grid mt12">
       <label class="f">Soort energiecontract
         <select id="contract">
           <option value="vast">Vast of variabel</option>
@@ -292,7 +316,7 @@ footer a{color:var(--muted)}
 
     <details class="more">
       <summary>Meer instellingen</summary>
-      <div class="grid" style="margin-top:10px">
+      <div class="grid mt10">
         <label class="f">Terugleverkosten nu, per jaar
           <span class="inp"><input id="tlkNu" type="number" inputmode="decimal" min="0" step="10" value="0"><span class="unit">€/jaar</span></span>
           <small>Betaal je in 2026 al terugleverkosten? Vul het jaarbedrag in (staat op je jaarafrekening).</small>
@@ -442,7 +466,7 @@ footer a{color:var(--muted)}
   </footer>
 </main>
 
-<noscript><p class="wrap" style="padding:16px">Zet JavaScript aan om de rekentool te gebruiken. De belangrijkste feiten en voorbeelden staan hierboven onder "In het kort".</p></noscript>
+<noscript><p class="wrap noscript">Zet JavaScript aan om de rekentool te gebruiken. De belangrijkste feiten en voorbeelden staan hierboven onder "In het kort".</p></noscript>
 <div class="toast" id="toast" role="status"></div>
 <script src="/calc.js" defer></script>
 <script src="/app.js" defer></script>
