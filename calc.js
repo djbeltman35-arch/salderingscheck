@@ -6,7 +6,7 @@
   var DEFAULTS = {
     stroomprijs: 0.27,          // all-in prijs per kWh afname incl. belastingen
     vergoedingNu: 0.05,         // netto terugleververgoeding 2026 over je overschot (na saldering)
-    netto27Vast: 0.005,         // netto vergoeding 2027 vast/variabel (vergoeding min terugleverkosten)
+    netto27Vast: 0.02,          // netto vergoeding 2027 vast/variabel als je leverancier onbekend is (mediaan 1 jaar vast, nov 2026)
     netto27Dyn: 0.03,           // schatting netto vergoeding 2027 dynamisch (marktprijs tijdens zonuren, vaak geen terugleverkosten)
     opbrengstPerWp: 0.9,        // kWh per wattpiek per jaar in Nederland (900 vollasturen)
     directAandeel: 0.30,        // deel van de opwek dat je gemiddeld direct zelf gebruikt
@@ -19,6 +19,29 @@
     prijsVastGrootPerKwh: 650,  // vaste installatie >= 8 kWh, incl. btw en installatie
     btwAfdrachtPerKwh: 15       // forfaitaire btw-afdracht bij btw-teruggave
   };
+
+  // Netto terugleververgoeding 2027 (vergoeding min terugleverkosten), cent per kWh.
+  // Bron: modelcontracten en tarievenbladen van leveranciers, verzameld door energiethuisadvies.nl (stand 9 november 2026).
+  var LEVERANCIERS = [
+    { id: 'eneco-var', naam: 'Eneco, variabel', netto: 8.32 },
+    { id: 'oxxio-var', naam: 'Oxxio, variabel', netto: 7.76 },
+    { id: 'eneco-1', naam: 'Eneco, 1 jaar vast', netto: 5.08 },
+    { id: 'oxxio-1', naam: 'Oxxio, 1 jaar vast', netto: 4.47 },
+    { id: 'vattenfall-1', naam: 'Vattenfall, 1 jaar vast', netto: 4.10 },
+    { id: 'delta-1', naam: 'DELTA Energie, 1 jaar vast', netto: 3.50 },
+    { id: 'delta-3', naam: 'DELTA Energie, 3 jaar vast', netto: 3.50 },
+    { id: 'essent-1', naam: 'Essent, 1 jaar vast', netto: 3.08 },
+    { id: 'essent-3', naam: 'Essent, 3 jaar vast', netto: 1.62 },
+    { id: 'energiedirect-1', naam: 'Energiedirect, 1 jaar vast', netto: 1.0 },
+    { id: 'energiedirect-3', naam: 'Energiedirect, 3 jaar vast', netto: 1.0 },
+    { id: 'coolblue-1', naam: 'Coolblue Energie, 1 jaar vast', netto: 0.50 },
+    { id: 'nextenergy-var', naam: 'NextEnergy, variabel', netto: 0.50 },
+    { id: 'pure-1', naam: 'Pure Energie, 1 jaar vast', netto: 0.25 },
+    { id: 'vandebron-1', naam: 'Vandebron, 1 jaar vast', netto: 0.25 },
+    { id: 'zonopnaam-1', naam: 'Zonopnaam Energie, 1 jaar vast', netto: 0 }
+  ];
+  // Beste vaste (1 jaar) aanbieding als vergelijkingspunt: variabele tarieven kunnen nog wijzigen.
+  var BESTE_VAST = { naam: 'Eneco, 1 jaar vast', netto: 5.08 };
 
   // Verschuifbaar verbruik naar zonuren (grove indicatie, kWh per jaar)
   var APPARATEN = [
@@ -118,15 +141,18 @@
     var p = { T: T, A: A, prijs: prijs, v27: v27 };
     var opties = [];
 
-    // Optie: ander contract
-    var altType = contract === 'dynamisch' ? 'vast' : 'dynamisch';
-    var vAlt = altType === 'dynamisch' ? vDyn : vVast;
+    // Optie: andere leverancier of contract
+    var besteVast = BESTE_VAST.netto / 100;
+    var altNetto = Math.max(besteVast, vDyn);
+    var altType = altNetto === vDyn && vDyn > besteVast ? 'dynamisch' : 'leverancier';
     opties.push({
       id: 'contract',
-      titel: altType === 'dynamisch' ? 'Overstappen naar een dynamisch contract' : 'Overstappen naar een vast of variabel contract',
-      besparing: T * (vAlt - v27),
+      titel: altType === 'dynamisch' ? 'Overstappen naar een dynamisch contract' : 'Overstappen naar een leverancier met hogere vergoeding',
+      besparing: T * (altNetto - v27),
       kosten: 0,
-      altType: altType
+      altType: altType,
+      altNetto: altNetto,
+      besteNaam: BESTE_VAST.naam
     });
 
     // Optie: slimmer verbruiken
@@ -176,7 +202,7 @@
     };
   }
 
-  var api = { DEFAULTS: DEFAULTS, APPARATEN: APPARATEN, bereken: bereken, batterijPrijsPerKwh: batterijPrijsPerKwh };
+  var api = { DEFAULTS: DEFAULTS, APPARATEN: APPARATEN, LEVERANCIERS: LEVERANCIERS, BESTE_VAST: BESTE_VAST, bereken: bereken, batterijPrijsPerKwh: batterijPrijsPerKwh };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.SC = api;
 })(this);

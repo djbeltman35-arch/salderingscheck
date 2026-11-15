@@ -58,7 +58,7 @@
         { "@type": "Question", "name": "Wanneer stopt de salderingsregeling?",
           "acceptedAnswer": { "@type": "Answer", "text": "De salderingsregeling stopt in één keer op 1 januari 2027. Er is geen afbouw: tot en met 31 december 2026 saldeer je nog volledig, daarna niet meer." } },
         { "@type": "Question", "name": "Wat krijg ik vanaf 2027 voor teruggeleverde stroom?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Van 2027 tot 2030 moet je leverancier je minimaal 50% van het kale leveringstarief (de stroomprijs zonder belastingen) betalen. Daar gaan wel terugleverkosten per kWh vanaf. Bij vaste en variabele contracten houd je netto vaak minder dan 1 cent per kWh over." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Van 2027 tot 2030 moet je leverancier je minimaal 50% van het kale leveringstarief (de stroomprijs zonder belastingen) betalen. Daar gaan wel terugleverkosten per kWh vanaf. Netto verschilt sterk per leverancier: bij 1 jaar vast van 0 tot ruim 5 cent per kWh (stand november 2026)." } },
         { "@type": "Question", "name": "Loont een thuisbatterij na 2027?",
           "acceptedAnswer": { "@type": "Answer", "text": "Dat hangt af van je teruglevering, je verbruik 's avonds en de prijs per kWh opslag. Een kleine, goedkope batterij verdient zich het snelst terug; een grote batterij met installatie vaak niet binnen de levensduur. Reken het met deze tool uit voor jouw situatie." } },
         { "@type": "Question", "name": "Moet ik mijn energiecontract aanpassen?",
@@ -242,8 +242,8 @@ footer a{color:var(--muted)}
     <p class="lead">Zie in 1 minuut wat je vanaf 2027 extra betaalt, en wat het slimst is om te doen. Gratis, onafhankelijk en zonder account.</p>
     <section class="meters" aria-label="Kerncijfers">
       <div class="meter"><div class="lab">Salderen stopt</div><div class="led" id="ledDagen">47<small>dgn</small></div><div class="src">op 1 jan 2027</div></div>
-      <div class="meter"><div class="lab">Terug&shy;levering</div><div class="led">0,5<small>ct</small></div><div class="src">netto per kWh</div></div>
-      <div class="meter"><div class="lab">Jij betaalt</div><div class="led" id="heroExtra">€536</div><div class="src">extra per jaar</div></div>
+      <div class="meter"><div class="lab">Terug&shy;levering</div><div class="led">0–5<small>ct</small></div><div class="src">netto per kWh</div></div>
+      <div class="meter"><div class="lab">Jij betaalt</div><div class="led" id="heroExtra">€498</div><div class="src">extra per jaar</div></div>
     </section>
     <div class="todo" aria-labelledby="todo-kop">
       <h2 id="todo-kop" class="todo-kop">Wat kun je eraan doen?</h2>
@@ -309,6 +309,12 @@ footer a{color:var(--muted)}
           <option value="dynamisch">Dynamisch (uurprijzen)</option>
         </select>
       </label>
+      <label class="f">Je leverancier in 2027
+        <select id="leverancier">
+          <option value="">Weet ik niet (gemiddeld ±2 ct)</option>
+        </select>
+        <small>Netto vergoeding per teruggeleverde kWh. Bepaalt wat teruglevering je straks oplevert.</small>
+      </label>
       <label class="f">Stroomprijs per kWh (alles in)
         <span class="inp"><input id="stroomprijs" type="number" inputmode="decimal" min="0.05" max="1.5" step="0.01" value="0.27"><span class="unit">€/kWh</span></span>
         <small>Inclusief belastingen. Weet je het niet? Laat €0,27 staan.</small>
@@ -327,8 +333,8 @@ footer a{color:var(--muted)}
           <small>Voor wat je meer teruglevert dan je afneemt (netto, 2026).</small>
         </label>
         <label class="f">Netto vergoeding 2027, vast/variabel
-          <span class="inp"><input id="netto27Vast" type="number" inputmode="decimal" step="0.005" value="0.005"><span class="unit">€/kWh</span></span>
-          <small>Vergoeding min terugleverkosten. Bij veel leveranciers rond 0,5 cent.</small>
+          <span class="inp"><input id="netto27Vast" type="number" inputmode="decimal" step="0.001" value="0.02"><span class="unit">€/kWh</span></span>
+          <small>Vergoeding min terugleverkosten. Wordt ingevuld als je je leverancier kiest.</small>
         </label>
         <label class="f">Netto vergoeding 2027, dynamisch
           <span class="inp"><input id="netto27Dyn" type="number" inputmode="decimal" step="0.005" value="0.03"><span class="unit">€/kWh</span></span>
@@ -367,7 +373,7 @@ footer a{color:var(--muted)}
     <ul class="facts">
       <li><strong>Einddatum:</strong> de salderingsregeling stopt op 1 januari 2027, in één keer en zonder afbouw.</li>
       <li><strong>Terugleververgoeding:</strong> van 2027 tot 2030 minimaal 50% van het kale leveringstarief (stroomprijs zonder belastingen).</li>
-      <li><strong>Terugleverkosten:</strong> bij vaste en variabele contracten in 2027 ongeveer 4,5 tot 6,5 cent per kWh. Netto houd je vaak maar rond 0,5 cent per teruggeleverde kWh over.</li>
+      <li><strong>Netto vergoeding 2027:</strong> vergoeding min terugleverkosten verschilt sterk per leverancier. Bij 1 jaar vast van 0 cent (Zonopnaam) tot 5,08 cent per kWh (Eneco); variabel bij Eneco en Oxxio zelfs rond 8 cent. <a href="/terugleverkosten-2027/">Bekijk de tabel per leverancier</a>.</li>
       <li><strong>Dynamisch contract:</strong> bij een flink aantal aanbieders geen terugleverkosten, maar de vergoeding volgt de (lage) marktprijs tijdens zonuren.</li>
       <li><strong>Gevolg:</strong> zelf je zonnestroom gebruiken bespaart bijna de volle stroomprijs, terugleveren levert bijna niets op.</li>
       <li><strong>Thuisbatterij:</strong> plug-and-play gemiddeld ruim €400 per kWh, vast €600 tot €850 per kWh. Lonend is vooral een kleine batterij rond €300 per kWh. Geen landelijke subsidie.</li>
@@ -378,14 +384,14 @@ footer a{color:var(--muted)}
         <caption class="sr">Geschatte extra stroomkosten per jaar vanaf 2027, bij een vast of variabel contract en €0,27 per kWh</caption>
         <thead><tr><th scope="col">Situatie</th><th scope="col">Extra per jaar</th><th scope="col">Per maand</th></tr></thead>
         <tbody>
-          <tr><td>6 panelen, 2.500 kWh verbruik</td><td><strong>±€400</strong></td><td>±€33</td></tr>
-          <tr><td>10 panelen, 3.000 kWh verbruik</td><td><strong>±€535</strong></td><td>±€45</td></tr>
-          <tr><td>14 panelen, 3.500 kWh verbruik</td><td><strong>±€595</strong></td><td>±€50</td></tr>
-          <tr><td>20 panelen, 4.500 kWh verbruik</td><td><strong>±€740</strong></td><td>±€62</td></tr>
+          <tr><td>6 panelen, 2.500 kWh verbruik</td><td><strong>±€380</strong></td><td>±€32</td></tr>
+          <tr><td>10 panelen, 3.000 kWh verbruik</td><td><strong>±€500</strong></td><td>±€42</td></tr>
+          <tr><td>14 panelen, 3.500 kWh verbruik</td><td><strong>±€545</strong></td><td>±€45</td></tr>
+          <tr><td>20 panelen, 4.500 kWh verbruik</td><td><strong>±€665</strong></td><td>±€56</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Panelen van 400 Wp. Uitgangspunten: €0,27 per kWh, 30% direct eigen verbruik, netto vergoeding 2027 €0,005 per kWh, geen terugleverkosten in 2026. Een plug-and-play batterij van 2,7 kWh à €420 per kWh bespaart in deze voorbeelden ongeveer €110 per jaar en verdient zich in ruim 10 jaar terug. Bijgewerkt op <time datetime="2026-11-15">15 november 2026</time> door Erik.</p>
+    <p class="note">Panelen van 400 Wp. Uitgangspunten: €0,27 per kWh, 30% direct eigen verbruik, netto vergoeding 2027 €0,02 per kWh, geen terugleverkosten in 2026. Bij een leverancier met 5 cent netto is het ruim €70 tot €150 per jaar minder. Een plug-and-play batterij van 2,7 kWh à €420 per kWh bespaart in deze voorbeelden ongeveer €105 per jaar en verdient zich in bijna 11 jaar terug. Bijgewerkt op <time datetime="2026-11-16">16 november 2026</time> door Erik.</p>
   </section>
 
   <section class="card info" aria-labelledby="h-info">
@@ -397,13 +403,13 @@ footer a{color:var(--muted)}
     </details>
     <details>
       <summary>Terugleververgoeding en terugleverkosten na 2027</summary>
-      <p>Van 2027 tot 2030 moet je leverancier je minimaal 50% van het kale leveringstarief betalen: de stroomprijs zonder energiebelasting en btw. Daar staan terugleverkosten per kWh tegenover. Bij vaste en variabele contracten liggen die in 2027 tussen ongeveer 4,5 en 6,5 cent per kWh, waardoor je netto vaak maar rond een halve cent per kWh overhoudt.</p>
+      <p>Van 2027 tot 2030 moet je leverancier je minimaal 50% van het kale leveringstarief betalen: de stroomprijs zonder energiebelasting en btw. Daar staan terugleverkosten per kWh tegenover. Wat je netto overhoudt, verschilt sterk per leverancier. Bij 1 jaar vast loopt dat van 0 tot ruim 5 cent per kWh, bij sommige variabele contracten rond 8 cent. Zie de <a href="/terugleverkosten-2027/">tabel per leverancier</a>.</p>
       <p>Bij een flink aantal dynamische contracten betaal je geen terugleverkosten. Je vergoeding volgt dan wel de marktprijs, en die is laag als de zon fel schijnt. Vergelijk daarom altijd de <strong>netto</strong> vergoeding: vergoeding min terugleverkosten.</p>
       <p>Wijzigt je contract door het einde van salderen? Dan mag je het kosteloos opzeggen.</p>
     </details>
     <details>
       <summary>Loont een thuisbatterij?</summary>
-      <p>Een thuisbatterij slaat je zonnestroom van overdag op voor 's avonds. Elke opgeslagen kWh bespaart je bijna de volle stroomprijs, in plaats van een halve cent vergoeding. Maar de batterij moet zichzelf wel terugverdienen binnen de levensduur van 10 tot 15 jaar.</p>
+      <p>Een thuisbatterij slaat je zonnestroom van overdag op voor 's avonds. Elke opgeslagen kWh bespaart je bijna de volle stroomprijs, in plaats van de paar cent vergoeding die je voor teruglevering krijgt. Maar de batterij moet zichzelf wel terugverdienen binnen de levensduur van 10 tot 15 jaar.</p>
       <ul>
         <li><strong>Prijs per kWh is alles.</strong> Plug-and-play batterijen kosten gemiddeld ruim €400 per kWh. Vaste installaties €600 tot €850 per kWh. Test-Aankoop adviseert te mikken op rond €300, en niet meer dan €450 per kWh.</li>
         <li><strong>Niet te groot.</strong> De eerste kWh opslag verdienen het meest. Een te grote batterij vult zich vaak niet helemaal.</li>
@@ -437,7 +443,8 @@ footer a{color:var(--muted)}
         <li><a href="https://www.rijksoverheid.nl/onderwerpen/energie-thuis/salderingsregeling" rel="noopener" target="_blank">Rijksoverheid: salderingsregeling</a></li>
         <li><a href="https://selectra.nl/energie/zonnepanelen/salderingsregeling" rel="noopener" target="_blank">Selectra: einde salderingsregeling</a></li>
         <li><a href="https://www.energievergelijk.nl/nieuws/bij-deze-energieleveranciers-betaal-je-geen-terugleverkosten-in-2027" rel="noopener" target="_blank">Energievergelijk: terugleverkosten 2027</a></li>
-        <li><a href="https://www.keuze.nl/nieuws/salderen-na-2027-van-deze-leveranciers-is-de-vergoeding-bekend" rel="noopener" target="_blank">Keuze.nl: netto terugleververgoeding 2027</a></li>
+        <li><a href="https://www.energiethuisadvies.nl/kennisbank/terugleverkosten-2027" rel="noopener" target="_blank">Energiethuisadvies: terugleverkosten 2027 per leverancier (stand 9 november 2026)</a></li>
+        <li><a href="https://weetwatt.nl/terugleverkosten" rel="noopener" target="_blank">WeetWatt: terugleverkosten per energieleverancier</a></li>
         <li><a href="https://www.keuze.nl/nieuws/energiebelasting-2027-stijgt-toch" rel="noopener" target="_blank">Keuze.nl: energiebelasting 2027</a></li>
         <li><a href="https://www.test-aankoop.be/woning-energie/hernieuwbare-energie/nieuws/beste-plug-and-play-thuisbatterijen" rel="noopener" target="_blank">Test-Aankoop: prijs thuisbatterijen</a></li>
         <li><a href="https://id.nl/energie-en-klimaat/elektriciteit/batterijen/dit-zijn-de-10-meest-gestelde-vragen-over-thuisbatterijen" rel="noopener" target="_blank">ID.nl: vragen over thuisbatterijen</a></li>
@@ -445,6 +452,15 @@ footer a{color:var(--muted)}
       </ul>
       <p class="hint">Uitgangspunten bijgewerkt: november 2026. Aan de uitkomst kunnen geen rechten worden ontleend.</p>
     </details>
+  </section>
+
+  <section class="card" aria-labelledby="h-lees">
+    <h2 id="h-lees">Lees verder</h2>
+    <div class="sitegrid">
+      <a class="site" href="/terugleverkosten-2027/"><b>Terugleverkosten 2027 per leverancier</b><span>Wat houd je netto over per teruggeleverde kWh? Alle leveranciers op een rij.</span></a>
+      <a class="site" href="/thuisbatterij-terugverdientijd/"><b>Thuisbatterij: wanneer loont hij?</b><span>Eerlijke rekenvoorbeelden voor plug-and-play en vaste batterijen.</span></a>
+      <a class="site" href="/einde-salderen-wat-nu/"><b>Einde salderen: wat nu?</b><span>Checklist: zes stappen voor 1 januari 2027.</span></a>
+    </div>
   </section>
 
   <section class="card" aria-labelledby="h-meer">

@@ -20,8 +20,8 @@
 
   var SC = window.SC;
   var $ = function (id) { return document.getElementById(id); };
-  var STORE = 'salderingscheck-v1';
-  var VELDEN = ['panelen', 'wp', 'verbruik', 'afname', 'teruglevering', 'contract', 'stroomprijs', 'tlkNu', 'vergoedingNu', 'netto27Vast', 'netto27Dyn'];
+  var STORE = 'salderingscheck-v2';
+  var VELDEN = ['panelen', 'wp', 'verbruik', 'afname', 'teruglevering', 'contract', 'leverancier', 'stroomprijs', 'tlkNu', 'vergoedingNu', 'netto27Vast', 'netto27Dyn'];
 
   var state = {
     modus: 'schatten',
@@ -48,7 +48,7 @@
   function bewaar(inp) { try { localStorage.setItem(STORE, JSON.stringify(inp)); } catch (e) { /* geen opslag */ } }
   function zet(inp) {
     if (!inp) return;
-    VELDEN.forEach(function (k) { if (inp[k] != null && inp[k] !== '') $(k).value = inp[k]; });
+    VELDEN.forEach(function (k) { if (inp[k] != null && inp[k] !== '') { $(k).value = inp[k]; if (k === 'leverancier') $(k).dataset.waarde = inp[k]; } });
     ['modus', 'batterijType', 'batterijPrijs'].forEach(function (k) { if (inp[k] != null) state[k] = inp[k]; });
     if (inp.batterijCap != null && isFinite(parseFloat(inp.batterijCap))) state.batterijCap = parseFloat(inp.batterijCap);
     if (inp.handel != null && isFinite(parseFloat(inp.handel))) state.handel = parseFloat(inp.handel);
@@ -166,9 +166,12 @@
     var c = opt.contract;
     $('contract-titel').textContent = c.titel;
     setSave('contract-save', c.besparing);
-    $('contract-note').textContent = c.altType === 'dynamisch'
-      ? 'Bij veel dynamische contracten betaal je geen terugleverkosten. Je vergoeding volgt wel de marktprijs, en je stroomprijs wisselt per uur. Past vooral als je verbruik kunt verschuiven of een batterij hebt. We rekenen hier alleen het verschil in vergoeding voor je teruglevering.'
-      : 'Met een vast of variabel contract heb je zekerheid over je stroomprijs, maar houd je na 2027 netto vaak maar een halve cent per teruggeleverde kWh over. We rekenen hier alleen het verschil in vergoeding voor je teruglevering.';
+    var nettoCt = function (v) { return new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 2 }).format(v * 100).replace(/^-/, '−') + ' ct'; };
+    $('contract-note').textContent = c.besparing > 0.5
+      ? (c.altType === 'dynamisch'
+        ? 'Met een dynamisch contract krijg je naar schatting ' + nettoCt(c.altNetto) + ' netto per teruggeleverde kWh, tegen ' + nettoCt(r.v27) + ' nu. Je stroomprijs wisselt dan wel per uur.'
+        : 'De hoogste netto vergoeding bij 1 jaar vast heeft nu ' + c.besteNaam + ': ' + nettoCt(c.altNetto) + ' per kWh, tegen ' + nettoCt(r.v27) + ' bij jou. Vergelijk ook de stroomprijs, want die telt zwaarder als je veel afneemt.')
+      : 'Je zit al bij een van de hoogste netto vergoedingen. Overstappen levert op teruglevering weinig op.';
     $('contract-pill').textContent = c.besparing > 0.5 ? 'Gratis overstappen' : 'Niet voordeliger';
     $('contract-pill').className = 'pill ' + (c.besparing > 0.5 ? 'good' : 'neutral');
 
@@ -294,6 +297,21 @@
     if (uitUrl()) history.replaceState(null, '', location.pathname);
     bouwOpties();
     aftellen();
+
+    var levSel = $('leverancier');
+    SC.LEVERANCIERS.forEach(function (l) {
+      var o = document.createElement('option');
+      o.value = l.id; o.textContent = l.naam + ' (' + nr1.format(l.netto) + ' ct)';
+      levSel.appendChild(o);
+    });
+    if (levSel.dataset.waarde) levSel.value = levSel.dataset.waarde;
+    levSel.addEventListener('change', function () {
+      var l = SC.LEVERANCIERS.filter(function (x) { return x.id === levSel.value; })[0];
+      $('netto27Vast').value = l ? (l.netto / 100).toFixed(4).replace(/0+$/, '').replace(/\.$/, '') : String(SC.DEFAULTS.netto27Vast);
+      if (l) $('contract').value = 'vast';
+      update();
+    });
+    $('contract').addEventListener('change', function () { if (this.value === 'dynamisch') levSel.value = ''; });
 
     document.querySelectorAll('[data-modus]').forEach(function (b) {
       b.addEventListener('click', function () { state.modus = b.dataset.modus; update(); });

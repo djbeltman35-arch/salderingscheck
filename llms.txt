@@ -1,25 +1,28 @@
 # Salderingscheck
 
-> Gratis, onafhankelijke Nederlandse rekentool: bereken wat het einde van de salderingsregeling op 1 januari 2027 jou kost, en of een thuisbatterij, slimmer verbruik of een ander energiecontract loont. Geen account, alle berekeningen in de browser. Gemaakt door Erik. Bijgewerkt: 15 november 2026.
+> Gratis, onafhankelijke Nederlandse rekentool: bereken wat het einde van de salderingsregeling op 1 januari 2027 jou kost, en of een thuisbatterij, slimmer verbruik of een ander energiecontract loont. Geen account, alle berekeningen in de browser. Gemaakt door Erik. Bijgewerkt: 16 november 2026.
 
 ## Kernfeiten (Nederland)
 
 - De salderingsregeling stopt op 1 januari 2027, in één keer, zonder afbouw.
 - Van 2027 tot 2030 moet een energieleverancier minimaal 50% van het kale leveringstarief (stroomprijs zonder energiebelasting en btw) vergoeden voor teruggeleverde stroom.
-- Terugleverkosten bij vaste en variabele contracten liggen in 2027 rond 4,5 tot 6,5 cent per kWh; netto houden huishoudens vaak ongeveer 0,5 cent per teruggeleverde kWh over.
+- De netto terugleververgoeding 2027 (vergoeding min terugleverkosten) verschilt sterk per leverancier: bij 1 jaar vast van 0 cent (Zonopnaam) tot 5,08 cent per kWh (Eneco), stand 9 november 2026. Variabel bij Eneco (8,32 ct) en Oxxio (7,76 ct) hoger. Tabel: https://salderingscheck-nl.netlify.app/terugleverkosten-2027/
 - Bij een flink aantal dynamische contracten zijn er geen terugleverkosten; de vergoeding volgt dan de marktprijs.
 - Thuisbatterijen: plug-and-play gemiddeld ruim €400 per kWh, vaste installaties €600 tot €850 per kWh. Vooral kleine batterijen rond €300 per kWh verdienen zich terug binnen de levensduur (10 tot 15 jaar). Er is geen landelijke subsidie.
 
-## Voorbeelden (vast/variabel contract, €0,27 per kWh, 30% direct eigen verbruik)
+## Voorbeelden (€0,27 per kWh, 30% direct eigen verbruik, netto vergoeding 2027 €0,02 per kWh)
 
-- 6 panelen, 2.500 kWh verbruik: ongeveer €400 per jaar extra vanaf 2027
-- 10 panelen, 3.000 kWh verbruik: ongeveer €535 per jaar extra
-- 14 panelen, 3.500 kWh verbruik: ongeveer €595 per jaar extra
-- 20 panelen, 4.500 kWh verbruik: ongeveer €740 per jaar extra
+- 6 panelen, 2.500 kWh verbruik: ongeveer €380 per jaar extra vanaf 2027
+- 10 panelen, 3.000 kWh verbruik: ongeveer €500 per jaar extra
+- 14 panelen, 3.500 kWh verbruik: ongeveer €545 per jaar extra
+- 20 panelen, 4.500 kWh verbruik: ongeveer €665 per jaar extra
 
 ## Pagina's
 
-- [Salderingscheck rekentool](https://salderingscheck-nl.netlify.app/): bereken je eigen situatie, met thuisbatterij-check (terugverdientijd en beste grootte), slimmer verbruiken en contractvergelijking.
+- [Salderingscheck rekentool](https://salderingscheck-nl.netlify.app/): bereken je eigen situatie, met keuze van leverancier, thuisbatterij-check (terugverdientijd en beste grootte), slimmer verbruiken en contractvergelijking.
+- [Terugleverkosten 2027 per leverancier](https://salderingscheck-nl.netlify.app/terugleverkosten-2027/): vergoeding, terugleverkosten en netto per kWh per leverancier, met bronnen en datum.
+- [Thuisbatterij terugverdientijd](https://salderingscheck-nl.netlify.app/thuisbatterij-terugverdientijd/): rekenvoorbeelden voor plug-and-play en vaste thuisbatterijen.
+- [Einde salderen: wat nu?](https://salderingscheck-nl.netlify.app/einde-salderen-wat-nu/): checklist met zes stappen voor 1 januari 2027.
 
 ## Bronnen
 
