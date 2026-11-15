@@ -152,6 +152,12 @@ details[open] summary::before{content:"▾ ";}
 .todo li{margin-bottom:4px}
 .todo b{color:#ffd54a}
 .todo-cta{display:inline-block;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.sitegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+@media (max-width:520px){.sitegrid{grid-template-columns:1fr}}
+.site{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s}
+.site:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.site b{color:var(--brand)}
+.site span{font-size:.88rem;color:var(--muted)}
 .facts{padding-left:20px;margin:0}
 .facts li{margin-bottom:6px;font-size:.95rem}
 .tabletitle{font-size:1rem;margin:16px 0 8px}
@@ -375,9 +381,21 @@ footer a{color:var(--muted)}
     </details>
   </section>
 
+  <section class="card" aria-labelledby="h-meer">
+    <h2 id="h-meer">Meer gratis bespaarsites</h2>
+    <p class="sub">Van dezelfde maker, allemaal gratis en zonder account.</p>
+    <div class="sitegrid">
+      <a class="site" href="https://boodschappenvergelijk.nl/"><b>Goedkope Boodschappen</b><span>Zet je boodschappen op een lijst en zie bij welke supermarkt je het minst betaalt.</span></a>
+      <a class="site" href="https://goedkopertanken.netlify.app/"><b>Tankwijzer</b><span>Vergelijk brandstofprijzen in Nederland, België en Duitsland en tank goedkoper over de grens.</span></a>
+      <a class="site" href="https://foutcodezoeker.nl/"><b>Foutcodezoeker</b><span>Zoek wat een foutcode van je wasmachine, vaatwasser of ander apparaat betekent en repareer het zelf.</span></a>
+      <a class="site" href="https://euroroadrules.eu/nl/"><b>EuroRoadRules</b><span>Vignetten, tol en milieuzones in heel Europa op één plek, met een gratis routeplanner.</span></a>
+      <a class="site" href="https://vluchtwijzer.netlify.app/"><b>Vluchtwijzer</b><span>Vind de goedkoopste vliegtickets: vergelijkt de grote vluchtsites in één keer.</span></a>
+      <a class="site" href="https://vakantietoppers.netlify.app/"><b>Vakantiewijzer</b><span>Vergelijk pakketreizen, hotels, vakantieparken en campings bij Nederlandse aanbieders.</span></a>
+    </div>
+  </section>
+
   <footer>
     <p>Gemaakt door Erik · <a href="mailto:erik@beltman.email">erik@beltman.email</a></p>
-    <p class="sites">Meer besparen: <a href="https://goedkopertanken.netlify.app/">Tankwijzer</a> · <a href="https://boodschappenvergelijk.nl/">Goedkope Boodschappen</a></p>
     <p id="disclosure" class="hidden">Sommige links zijn partnerlinks. Sluit je via zo'n link iets af, dan krijgen wij een kleine vergoeding. Jij betaalt niets extra en het verandert onze berekening niet.</p>
   </footer>
 </main>
