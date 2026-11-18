@@ -7,17 +7,17 @@
   // Dan krijgt de link rel="sponsored" en verschijnt de melding over partnerlinks.
   var PARTNERS = {
     batterijPlugin: [
-      { naam: 'Bekijk plug-and-play thuisbatterijen bij Zendure', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck', affiliate: true },
-      { naam: 'Zendure SolarFlow 1600 AC+', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-1600-ac', affiliate: true },
-      { naam: 'Zendure SolarFlow 2400 AC+', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-2400-ac-plus', affiliate: true },
-      { naam: 'Zendure P1-meter (slim laden)', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fslimme-meter-p1', affiliate: true },
+      { naam: 'Bekijk plug-and-play thuisbatterijen', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck', affiliate: true },
+      { naam: 'Plug-in thuisbatterij, instapmodel', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-1600-ac', affiliate: true },
+      { naam: 'Plug-in thuisbatterij, groter model', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-2400-ac-plus', affiliate: true },
+      { naam: 'P1-meter voor slim laden', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fslimme-meter-p1', affiliate: true },
       { naam: 'Of bekijk Anker Solix', url: 'https://www.ankersolix.com/nl', affiliate: false }
     ],
     batterijVast: [
       { naam: 'Vergelijk offertes van installateurs', url: 'https://www.homedeal.nl/thuisbatterij/', affiliate: false }
     ],
     contract: [
-      { naam: 'Vergelijk energiecontracten bij Gaslicht.com', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck', affiliate: true },
+      { naam: 'Vergelijk energiecontracten', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck', affiliate: true },
       { naam: 'Dynamisch contract vergelijken', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck&ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken%2Fdynamisch-energiecontract-vergelijken', affiliate: true },
       { naam: '3 jaar vast vergelijken', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck&ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken%2Fenergiecontract-3-jaar-vast', affiliate: true },
       { naam: 'Uitleg netto terugleververgoedingen 2027', url: 'https://www.energievergelijk.nl/onderwerpen/terugleververgoeding', affiliate: false }
