@@ -7,13 +7,15 @@
   // Dan krijgt de link rel="sponsored" en verschijnt de melding over partnerlinks.
   var PARTNERS = {
     batterijPlugin: [
-      { naam: 'Bekijk plug-and-play thuisbatterijen', url: 'https://www.ankersolix.com/nl', affiliate: false }
+      { naam: 'Bekijk plug-and-play thuisbatterijen bij Zendure', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck', affiliate: true },
+      { naam: 'Of bekijk Anker Solix', url: 'https://www.ankersolix.com/nl', affiliate: false }
     ],
     batterijVast: [
       { naam: 'Vergelijk offertes van installateurs', url: 'https://www.homedeal.nl/thuisbatterij/', affiliate: false }
     ],
     contract: [
-      { naam: 'Vergelijk netto terugleververgoedingen 2027', url: 'https://www.energievergelijk.nl/onderwerpen/terugleververgoeding', affiliate: false }
+      { naam: 'Vergelijk energiecontracten bij Gaslicht.com', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck', affiliate: true },
+      { naam: 'Uitleg netto terugleververgoedingen 2027', url: 'https://www.energievergelijk.nl/onderwerpen/terugleververgoeding', affiliate: false }
     ]
   };
   // ==========================================================================
