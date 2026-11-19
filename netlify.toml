@@ -7,7 +7,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://salderingscheck-nl.goatcounter.com https://images.daisycon.io https://static.daisycon.tools https://*.daisycon.io; style-src 'self' 'unsafe-inline'; script-src 'self' https://gc.zgo.at https://daisycon.tools; connect-src 'self' https://salderingscheck-nl.goatcounter.com https://daisycon.tools https://*.daisycon.io; manifest-src 'self'; base-uri 'self'; form-action 'self';"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://salderingscheck-nl.goatcounter.com https://images.daisycon.io https://static.daisycon.tools https://*.daisycon.io https://energie.whitelabeled.nl https://api-energie.whitelabeled.nl; style-src 'self' 'unsafe-inline'; script-src 'self' https://gc.zgo.at https://daisycon.tools https://energie.whitelabeled.nl; connect-src 'self' https://salderingscheck-nl.goatcounter.com https://daisycon.tools https://*.daisycon.io https://energie.whitelabeled.nl https://api-energie.whitelabeled.nl; manifest-src 'self'; base-uri 'self'; form-action 'self';"
 
 [[headers]]
   for = "/"
