@@ -3,8 +3,8 @@
 @font-face{font-family:'Atkinson Hyperlegible';font-weight:700;font-display:swap;src:url(/fonts/atkinson-hyperlegible-700.woff2) format('woff2')}
 *{box-sizing:border-box}
 html,body{margin:0;background:transparent}
-body{font:15px/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;color:#14231c}
-.w{max-width:440px;margin:0 auto;padding:16px;border-radius:16px;color:#fff;background:linear-gradient(160deg,#0c5a43,#0f6b4f 45%,#0a4a38);border-bottom:4px solid #f5b400;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+body{font:15px/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;color:#1e2a22}
+.w{max-width:440px;margin:0 auto;padding:16px;border-radius:16px;color:#fff;background:linear-gradient(160deg,#0a6239,#0e7c4a 45%,#0a6239);border-bottom:4px solid #f5b400;box-shadow:0 8px 24px rgba(0,0,0,.2)}
 .top{display:flex;justify-content:space-between;align-items:center}
 .logo{font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:800;font-size:1.45rem;letter-spacing:.3px}
 .logo span{background:#f5b400;color:#1a1405;padding:0 5px;margin-left:2px;border-radius:3px}
@@ -13,7 +13,7 @@ body{font:15px/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;color:#14231c}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 label{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:700;color:#d8efe5}
 label.full{margin-top:8px}
-input,select{font:inherit;font-size:16px;color:#14231c;background:#fff;border:0;border-radius:10px;padding:9px 10px;min-height:42px;width:100%}
+input,select{font:inherit;font-size:16px;color:#1e2a22;background:#fff;border:0;border-radius:10px;padding:9px 10px;min-height:42px;width:100%}
 .out{margin-top:10px;background:#08362a;border-radius:12px;padding:10px 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .out span{font-size:.82rem;color:#b9d8c9;font-weight:700;text-transform:uppercase}
 .out b{font-size:1.7rem;color:#f5b400;font-family:ui-monospace,monospace}

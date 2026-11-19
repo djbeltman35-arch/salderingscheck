@@ -65,7 +65,7 @@ def pagina(slug, titel, h1, lead, beschrijving, body, faq, kruimel):
 <meta name="description" content="{e(beschrijving)}">
 <link rel="canonical" href="{url}">
 {GC}
-<meta name="theme-color" content="#0f6b4f">
+<meta name="theme-color" content="#0e7c4a">
 <link rel="preload" href="/fonts/big-shoulders-display-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/artikel.css">

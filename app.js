@@ -310,7 +310,7 @@
     var x = cv.getContext('2d');
     var fonts = ['800 80px "Big Shoulders Display"', '400 40px "Atkinson Hyperlegible"', '700 40px "Atkinson Hyperlegible"'];
     return Promise.all(fonts.map(function (f) { return document.fonts ? document.fonts.load(f).catch(function () {}) : null; })).then(function () {
-      var g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#0c5a43'); g.addColorStop(.5, '#0f6b4f'); g.addColorStop(1, '#0a4a38');
+      var g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#0a6239'); g.addColorStop(.5, '#0e7c4a'); g.addColorStop(1, '#0a6239');
       x.fillStyle = g; x.fillRect(0, 0, W, H);
       var rg = x.createRadialGradient(W, 0, 0, W, 0, 700); rg.addColorStop(0, 'rgba(245,180,0,.35)'); rg.addColorStop(1, 'rgba(245,180,0,0)');
       x.fillStyle = rg; x.fillRect(0, 0, W, H);
@@ -343,8 +343,8 @@
       x.fillStyle = '#fff'; x.beginPath();
       if (x.roundRect) x.roundRect(60, 1110, W - 120, 180, 36); else x.rect(60, 1110, W - 120, 180);
       x.fill();
-      x.fillStyle = '#14231c'; x.font = '400 40px "Atkinson Hyperlegible", sans-serif'; x.fillText('Wat kost het jou? Reken het gratis uit:', 100, 1180);
-      x.fillStyle = '#0f6b4f'; x.font = '700 50px "Atkinson Hyperlegible", sans-serif'; x.fillText('salderingscheck-nl.netlify.app', 100, 1250);
+      x.fillStyle = '#1e2a22'; x.font = '400 40px "Atkinson Hyperlegible", sans-serif'; x.fillText('Wat kost het jou? Reken het gratis uit:', 100, 1180);
+      x.fillStyle = '#0e7c4a'; x.font = '700 50px "Atkinson Hyperlegible", sans-serif'; x.fillText('salderingscheck-nl.netlify.app', 100, 1250);
       return new Promise(function (res, rej) { cv.toBlob(function (bl) { bl ? res(bl) : rej(); }, 'image/png'); });
     });
   }
