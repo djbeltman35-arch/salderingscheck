@@ -18,8 +18,7 @@
     contract: [
       { naam: 'Vergelijk energiecontracten', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck', affiliate: true },
       { naam: 'Dynamisch contract vergelijken', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck&ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken%2Fdynamisch-energiecontract-vergelijken', affiliate: true },
-      { naam: '3 jaar vast vergelijken', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck&ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken%2Fenergiecontract-3-jaar-vast', affiliate: true },
-      { naam: 'Uitleg netto terugleververgoedingen 2027', url: 'https://www.energievergelijk.nl/onderwerpen/terugleververgoeding', affiliate: false }
+      { naam: '3 jaar vast vergelijken', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck&ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken%2Fenergiecontract-3-jaar-vast', affiliate: true }
     ]
   };
   // ==========================================================================
