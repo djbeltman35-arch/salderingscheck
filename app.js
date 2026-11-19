@@ -11,6 +11,7 @@
       { naam: 'Plug-in thuisbatterij, instapmodel', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-1600-ac', affiliate: true },
       { naam: 'Plug-in thuisbatterij, groter model', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-2400-ac-plus', affiliate: true },
       { naam: 'P1-meter voor slim laden', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fslimme-meter-p1', affiliate: true },
+      { naam: 'Plug-in batterij en energiemeters met gratis app', url: 'https://partner.homewizard.com/c/?si=18407&li=1795784&wi=448534&ws=salderingscheck&dl=nl%2F', affiliate: true },
     ],
     batterijVast: [
       { naam: 'Vergelijk offertes van installateurs', url: 'https://www.homedeal.nl/thuisbatterij/', affiliate: false }
