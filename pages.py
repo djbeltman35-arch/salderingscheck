@@ -86,7 +86,7 @@ def pagina(slug, titel, h1, lead, beschrijving, body, faq, kruimel):
 <script type="application/ld+json">
 {ld}
 </script>
-</head>
+<script src="/installeer.js" defer></script></head>
 <body>
 <header class="hero">
   {DECO}
