@@ -254,9 +254,43 @@ footer a{color:var(--muted)}
 .hidden{display:none!important}
 #install{display:none}
 @media print{.hero{padding-bottom:16px;background:none;color:#000}.hero .deco,.meters{display:none}main{margin-top:0}.actions,#install,.info,footer .sites{display:none}}
+
+/* gbstijl:start */
+.gbbar{background:var(--card);border-bottom:1px solid var(--line)}
+.gbbar .in{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:9px;padding-bottom:9px}
+.gbbar .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--brand);box-shadow:none}
+.gbbar .brand .mark svg{width:24px;height:24px}
+.gbbar .brand b{font-family:inherit;font-weight:700;font-size:19px;text-transform:none;letter-spacing:0;color:var(--ink);text-shadow:none;line-height:1.2}
+.gbbar .brand b span{background:none;color:inherit;padding:0;margin:0;box-shadow:none}
+.gbbar .status{background:var(--sun-soft);border-color:var(--line);color:var(--ink);font-size:.8rem}
+.hero{background:transparent;color:var(--ink);border-bottom:0;padding:22px 0 18px;text-align:center}
+.hero .deco{display:none}
+.hero-in{align-items:center}
+h1{font-family:inherit;font-weight:700;text-transform:none;font-size:clamp(28px,4.6vw,42px);line-height:1.12;letter-spacing:-.015em;color:var(--ink);max-width:22ch;text-shadow:none;text-wrap:balance;margin:0}
+.lead{color:var(--muted);font-weight:400;font-size:15px;text-shadow:none;margin:0 auto}
+.meters{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-sm);width:100%;max-width:640px;text-align:left}
+.meter{border-left-color:var(--line)}
+.meter .lab{color:var(--muted)}
+.meter .led{color:var(--brand);text-shadow:none}
+.meter .src{color:var(--muted)}
+.todo{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-sm);backdrop-filter:none;width:100%;max-width:900px;text-align:left}
+.todo-kop{font-family:inherit;font-weight:700;text-transform:none;letter-spacing:0;font-size:1.15rem;color:var(--ink)}
+.todo-item{background:var(--bg);border-color:var(--line);color:var(--ink)}
+.todo-item:hover{background:var(--good-soft)}
+.tt small{color:var(--muted)}
+.chip{background:var(--good-soft);color:var(--good);border-color:transparent}
+.chip.alt{background:var(--warn-soft);color:var(--warn)}
+.todo-cta{background:linear-gradient(180deg,#14935e,var(--brand));color:#fff;box-shadow:0 3px 8px rgba(10,40,28,.25)}
+main.wrap{margin-top:0!important}
+/* gbstijl:end */
 </style>
 </head>
 <body>
+<div class="gbbar"><div class="wrap in"><a class="brand" href="/">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="12" fill="#f5b400"/><g stroke="#f5b400" stroke-width="5" stroke-linecap="round"><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.6 13.6l5.6 5.6M44.8 44.8l5.6 5.6M13.6 50.4l5.6-5.6M44.8 19.2l5.6-5.6"/></g></svg></span>
+        <b>Salderings<span>check</span></b>
+      </a>
+      <span class="status"><i></i><span id="countdown">1 jan 2027</span></span></div></div>
 <header class="hero">
   <svg class="deco" viewBox="0 0 260 260" aria-hidden="true">
     <g stroke="#f5b400" stroke-width="10" stroke-linecap="round" opacity=".55"><path d="M170 18v24M170 158v24M90 100h24M226 100h24M113 43l17 17M210 140l17 17M113 157l17-17M210 60l17-17"/></g>
@@ -264,13 +298,6 @@ footer a{color:var(--muted)}
     <g transform="translate(118 168) skewX(-20)" opacity=".75"><rect width="128" height="62" rx="5" fill="#0a3d2f" stroke="#cfe9dd" stroke-width="3"/><path d="M32 0v62M64 0v62M96 0v62M0 31h128" stroke="#cfe9dd" stroke-width="2.5"/><path d="M6 6h20" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".5"/></g>
   </svg>
   <div class="wrap hero-in">
-    <div class="top">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="12" fill="#f5b400"/><g stroke="#f5b400" stroke-width="5" stroke-linecap="round"><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.6 13.6l5.6 5.6M44.8 44.8l5.6 5.6M13.6 50.4l5.6-5.6M44.8 19.2l5.6-5.6"/></g></svg></span>
-        <b>Salderings<span>check</span></b>
-      </a>
-      <span class="status"><i></i><span id="countdown">1 jan 2027</span></span>
-    </div>
     <h1>Wat kost het einde van salderen jou?</h1>
     <p class="lead">Zie in 1 minuut wat je vanaf 2027 extra betaalt, en wat het slimst is om te doen. Gratis, onafhankelijk en zonder account.</p>
     <section class="meters" aria-label="Kerncijfers">
