@@ -1,5 +1,6 @@
 [build]
   publish = "."
+  command = "python3 huisstijl/huisstijl.py . salderingscheck"
 
 [[headers]]
   for = "/*"
