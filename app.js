@@ -11,12 +11,14 @@
       { naam: 'Plug-in thuisbatterij, instapmodel', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-1600-ac', affiliate: true },
       { naam: 'Plug-in thuisbatterij, groter model', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fzendure-solarflow-2400-ac-plus', affiliate: true },
       { naam: 'P1-meter voor slim laden', url: 'https://glp8.net/c/?si=20779&li=1881195&wi=448534&ws=salderingscheck&dl=products%2Fslimme-meter-p1', affiliate: true },
+      { naam: 'Plug-in thuisbatterij, ander merk', url: 'https://glp8.net/c/?si=23136&li=1970556&wi=448534&ws=salderingscheck&dl=nl', affiliate: true },
       { naam: 'Plug-in batterij en energiemeters met gratis app', url: 'https://partner.homewizard.com/c/?si=18407&li=1795784&wi=448534&ws=salderingscheck&dl=nl%2F', affiliate: true },
     ],
     batterijVast: [
-      { naam: 'Vergelijk offertes van installateurs', url: 'https://www.homedeal.nl/thuisbatterij/', affiliate: false }
     ],
     contract: [
+      { naam: 'Dynamisch contract, per uur afgerekend', url: 'https://glp8.net/c/?si=19921&li=1848248&wi=448534&ws=salderingscheck&dl=nl', affiliate: true },
+      { naam: 'Dynamisch contract met inzicht-app', url: 'https://d.energyzero.nl/c/?si=20943&li=1892250&wi=448534&ws=salderingscheck&dl=', affiliate: true },
       { naam: 'Vergelijk energiecontracten', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck', affiliate: true },
       { naam: 'Dynamisch contract vergelijken', url: 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=3152283&clickref=salderingscheck&ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken%2Fdynamisch-energiecontract-vergelijken', affiliate: true },
       { naam: 'Dynamisch energiecontract afsluiten', url: 'https://lt45.net/c/?si=924&li=55221&wi=448534&ws=salderingscheck&dl=energie%2Fenergiecontract%2Fdynamisch', affiliate: true },
