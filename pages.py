@@ -14,6 +14,7 @@ SUN_MARK = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" 
 DECO = '''<svg class="deco" viewBox="0 0 260 260" aria-hidden="true"><g stroke="#f5b400" stroke-width="10" stroke-linecap="round" opacity=".55"><path d="M170 18v24M170 158v24M90 100h24M226 100h24M113 43l17 17M210 140l17 17M113 157l17-17M210 60l17-17"/></g><circle cx="170" cy="100" r="44" fill="#f5b400" opacity=".9"/><g transform="translate(118 168) skewX(-20)" opacity=".75"><rect width="128" height="62" rx="5" fill="#0a3d2f" stroke="#cfe9dd" stroke-width="3"/><path d="M32 0v62M64 0v62M96 0v62M0 31h128" stroke="#cfe9dd" stroke-width="2.5"/></g></svg>'''
 
 SITES = [
+    ("https://stroomwekker.eu/", "Stroomwekker", "Laat je thuisbatterij, boiler of auto vanzelf laden in de goedkoopste uren."),
     ("https://boodschappenvergelijk.nl/", "Goedkope Boodschappen", "Zie bij welke supermarkt je boodschappenlijst het goedkoopst is."),
     ("https://goedkopertanken.netlify.app/", "Tankwijzer", "Brandstofprijzen in NL, BE en DE: tank goedkoper over de grens."),
     ("https://foutcodezoeker.nl/", "Foutcodezoeker", "Wat betekent die foutcode? Repareer je apparaat zelf."),
